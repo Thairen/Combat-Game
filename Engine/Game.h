@@ -2,9 +2,6 @@
 #include <SFML/Graphics.hpp>
 #include "GameObject.h"
 
-const int row = 8;
-const int col = 8;
-
 class Game
 {
 public:
