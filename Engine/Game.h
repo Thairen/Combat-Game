@@ -2,6 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include "GameObject.h"
 #include "Player.h"
+#include "Character.h"
+#include "Clickable.h"
 
 class Game
 {
@@ -17,6 +19,11 @@ private:
 	std::vector<GameObject*> m_gameObjects;
 
 	Player* m_player;
+
+	Character* c1;
+	Character* c2;
+
+	Clickable* button;
 
 	bool m_gameOver;
 	sf::Font m_mainFont;
