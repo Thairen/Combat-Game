@@ -6,6 +6,7 @@ class Character : public GameObject
 {
 public:
 	Character(std::string texturePath, const sf::Vector2f & pos);
+	~Character();
 
 	virtual void Update(sf::RenderWindow* window, float dt);
 	virtual void Draw(sf::RenderWindow* window);

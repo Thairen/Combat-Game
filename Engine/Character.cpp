@@ -11,6 +11,11 @@ Character::Character(std::string texturePath, const sf::Vector2f & pos) : GameOb
 	m_exp = new Stat("XP", 0, 100);
 }
 
+Character::~Character()
+{
+	delete m_health, m_strength, m_defense, m_level, m_exp;
+}
+
 void Character::Update(sf::RenderWindow* window, float dt)
 {
 	GameObject::Update(window, dt);

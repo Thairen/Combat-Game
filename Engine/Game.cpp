@@ -5,6 +5,7 @@ Game::Game()
 	: m_gameOver(false)
 {
 	m_mainFont.loadFromFile("Fonts/kenpixel_high_square.ttf");
+	m_player = new Player();
 }
 void Game::Draw(sf::RenderWindow * window)
 {	
@@ -13,7 +14,6 @@ void Game::Draw(sf::RenderWindow * window)
 		GameObject* current = m_gameObjects[i];
 		current->Draw(window);
 	}
-	//ShowFonts(window);
 }
 
 void Game::Update(sf::RenderWindow * window, float dt)

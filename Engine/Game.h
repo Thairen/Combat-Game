@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "GameObject.h"
+#include "Player.h"
 
 class Game
 {
@@ -14,6 +15,9 @@ public:
 
 private:
 	std::vector<GameObject*> m_gameObjects;
+
+	Player* m_player;
+
 	bool m_gameOver;
 	sf::Font m_mainFont;
 };
