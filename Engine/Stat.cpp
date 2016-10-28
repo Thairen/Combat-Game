@@ -2,7 +2,7 @@
 
 
 
-Stat::Stat(float max) : m_current(max), m_max(max)
+Stat::Stat(std::string id, float current, float max) : m_id(id), m_current(current), m_max(max)
 {
 }
 

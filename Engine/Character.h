@@ -14,5 +14,7 @@ private:
 	Stat* m_health;
 	Stat* m_strength;
 	Stat* m_defense;
+	Stat* m_level;
+	Stat* m_exp;
 };
 
