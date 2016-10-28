@@ -13,7 +13,7 @@ void Game::Draw(sf::RenderWindow * window)
 		GameObject* current = m_gameObjects[i];
 		current->Draw(window);
 	}
-	ShowFonts(window);
+	//ShowFonts(window);
 }
 
 void Game::Update(sf::RenderWindow * window, float dt)
