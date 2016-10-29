@@ -13,8 +13,9 @@ Game::Game()
 
 	c2 = new Character("Sprites/peger.jpg", sf::Vector2f(1000.f, 200.f));
 	AddObject(c2);
+	c2->m_sprite.setScale(0.8, 0.8);
 
-	button = new Clickable(sf::Vector2f(300.f, 500.f));
+	button = new Clickable(sf::Vector2f(450.f, 475.f), "Attack");
 	AddObject(button);
 
 }

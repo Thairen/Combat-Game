@@ -15,10 +15,11 @@ public:
 	void GameOver() { m_gameOver = true;  }
 	void ShowFonts(sf::RenderWindow* window);
 
+	
 private:
 	std::vector<GameObject*> m_gameObjects;
 
-	Player* m_player;
+	Player* m_player; 
 
 	Character* c1;
 	Character* c2;
@@ -26,5 +27,6 @@ private:
 	Clickable* button;
 
 	bool m_gameOver;
+	
 	sf::Font m_mainFont;
 };
