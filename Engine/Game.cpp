@@ -18,6 +18,15 @@ Game::Game()
 	button = new Clickable(sf::Vector2f(450.f, 475.f), "Attack");
 	AddObject(button);
 
+	button1 = new Clickable(sf::Vector2f(450.f, 530.f), "Defend");
+	AddObject(button1);
+
+	button2 = new Clickable(sf::Vector2f(650.f, 475.f), "Items");
+	AddObject(button2);
+
+	button2 = new Clickable(sf::Vector2f(650.f, 530.f), "Escape");
+	AddObject(button2);
+
 }
 void Game::Draw(sf::RenderWindow * window)
 {	
@@ -53,17 +62,4 @@ void Game::AddObject(GameObject * object)
 {
 	object->SetOwner(this);
 	m_gameObjects.push_back(object);
-}
-
-void Game::ShowFonts(sf::RenderWindow* window)
-{
-	if (m_gameOver)
-	{
-		sf::Text gameOverText;
-		gameOverText.setFont(m_mainFont);
-		gameOverText.setString("GAME OVER!");
-		gameOverText.setCharacterSize(110);
-		gameOverText.setPosition(450, 150);
-		window->draw(gameOverText);
-	}
 }

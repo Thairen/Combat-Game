@@ -13,20 +13,22 @@ public:
 	void Update(sf::RenderWindow * window, float dt);
 	void AddObject(GameObject* object);
 	void GameOver() { m_gameOver = true;  }
-	void ShowFonts(sf::RenderWindow* window);
 
-	
 private:
 	std::vector<GameObject*> m_gameObjects;
 
-	Player* m_player; 
+	bool m_gameOver;
+	sf::Font m_mainFont;
+	Player* m_player;
+
+	//Temporary variables for testing purposes....
 
 	Character* c1;
 	Character* c2;
 
 	Clickable* button;
+	Clickable* button1;
+	Clickable* button2;
+	Clickable* button3;
 
-	bool m_gameOver;
-	
-	sf::Font m_mainFont;
 };
