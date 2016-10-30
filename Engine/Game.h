@@ -23,6 +23,9 @@ private:
 
 	//Temporary variables for testing purposes....
 
+	sf::Texture tex;
+	sf::Sprite background;
+
 	Character* c1;
 	Character* c2;
 

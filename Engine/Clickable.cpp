@@ -6,8 +6,8 @@ Clickable::Clickable(const sf::Vector2f& pos, std::string buttonText) : GameObje
 m_isHovering(false)
 {
 	m_font.loadFromFile("Fonts/kenpixel_high_square.ttf");
-	m_sprite.setTextureRect(sf::IntRect(0.f, 50.f, 190.f, 45.f));
-	m_sprite.setOrigin(m_sprite.getScale().x * 0.5f, m_sprite.getScale().y * 0.5);
+	m_sprite.setTextureRect(sf::IntRect(0, 50, 190, 45));
+	m_sprite.setOrigin(m_sprite.getScale().x * 0.5, m_sprite.getScale().y * 0.5);
 	m_text.setString(buttonText);
 	m_text.setFont(m_font);
 	m_text.setColor(sf::Color::White);
@@ -36,13 +36,13 @@ void Clickable::Hovering(sf::RenderWindow* window)
 		mousePos.y <= this->GetPosition().y + 50.f)
 	{
 		m_isHovering = true;
-		m_sprite.setTextureRect(sf::IntRect(0.f, 98.f, 190.f, 45.f));
+		m_sprite.setTextureRect(sf::IntRect(0, 98, 190, 45));
 	}
 
 	else
 	{
 		m_isHovering = false;
-		m_sprite.setTextureRect(sf::IntRect(0.f, 50.f, 190.f, 45.f));
+		m_sprite.setTextureRect(sf::IntRect(0, 50, 190, 45));
 	}
 }
 

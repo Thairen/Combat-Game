@@ -1,7 +1,3 @@
-﻿  Clickable.cpp
-c:\users\aicaoc\desktop\combat-game\engine\clickable.cpp(9): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\aicaoc\desktop\combat-game\engine\clickable.cpp(10): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\aicaoc\desktop\combat-game\engine\clickable.cpp(39): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\aicaoc\desktop\combat-game\engine\clickable.cpp(45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Engine.vcxproj -> C:\Users\aicaoc\Desktop\Combat-Game\Engine\x64\Debug\Engine.exe
-  Engine.vcxproj -> C:\Users\aicaoc\Desktop\Combat-Game\Engine\x64\Debug\Engine.pdb (Full PDB)
+﻿  Game.cpp
+c:\users\anais\desktop\combat-game\engine\game.cpp(51): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Engine.vcxproj -> C:\Users\Anais\Desktop\Combat-Game\Engine\x64\Debug\Engine.exe
