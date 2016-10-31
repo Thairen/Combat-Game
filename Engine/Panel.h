@@ -16,7 +16,6 @@ public:
 class PanelWithButtons : public Panel
 {
 	//Modify buttons to set the position relative to the panel
-	//Figure out how to push the buttons to the game object list (game reference?)
 public:
 
 	PanelWithButtons(const sf::Vector2f& pos);
@@ -27,9 +26,7 @@ public:
 
 private:
 
-	Clickable* button;
-	Clickable* button1;
-	Clickable* button2;
-	Clickable* button3;
+	Clickable* m_buttonList[4]; // To hold selection buttons
+
 };
 

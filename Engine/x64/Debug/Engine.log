@@ -1,3 +1,2 @@
-﻿  Game.cpp
-c:\users\anais\desktop\combat-game\engine\game.cpp(46): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+﻿  Clickable.cpp
   Engine.vcxproj -> C:\Users\Anais\Desktop\Combat-Game\Engine\x64\Debug\Engine.exe

@@ -29,12 +29,16 @@ public:
 
 	void SetCharacter(); //Set the sprite rect depending on type
 
+	void ShowStats(sf::RenderWindow* window);
+
 private:
 	Stat* m_health;
 	Stat* m_strength;
 	Stat* m_defense;
 	Stat* m_level;
 	Stat* m_exp;
+
+	sf::Font m_font;
 
 	//std::vector<Stat*> m_stats;  Preffered way to store stats
 

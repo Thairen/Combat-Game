@@ -13,6 +13,8 @@ public:
 	void Hovering(sf::RenderWindow* window);
 	
 private:
+	
+	//m_sprite.setTextureRect(sf::IntRect(0, 98, 190, 45));  //Move this to when button pressed
 
 	bool m_isHovering;
 	sf::Text m_text;

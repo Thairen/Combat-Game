@@ -20,38 +20,40 @@ void Panel::Update(sf::RenderWindow * window, float dt)
 
 PanelWithButtons::PanelWithButtons(const sf::Vector2f& pos) : Panel(pos)
 {
-	button = new Clickable(sf::Vector2f(80.f, 600.f), "Attack");
-	button->m_sprite.setScale(0.8f, 0.8f);
+	m_buttonList[0] = new Clickable(sf::Vector2f(270.f, 525.f), "Attack");
 
-	button1 = new Clickable(sf::Vector2f(80.f, 650.f), "Defend");
-	button1->m_sprite.setScale(0.8f, 0.8f);
+	m_buttonList[1] = new Clickable(sf::Vector2f(270.f, 566.f), "Defend");
 
-	button2 = new Clickable(sf::Vector2f(245.f, 600.f), "Items");
-	button2->m_sprite.setScale(0.8f, 0.8f);
+	m_buttonList[2] = new Clickable(sf::Vector2f(270.f, 608.f), "Items");
 
-	button3 = new Clickable(sf::Vector2f(245.f, 650.f), "Escape");
-	button3->m_sprite.setScale(0.8f, 0.8f);
+	m_buttonList[3] = new Clickable(sf::Vector2f(270.f, 650.f), "Escape");
+
 }
 
 PanelWithButtons::~PanelWithButtons()
 {
-	delete button, button1, button2, button3;
+	for (int i = 0; i < 4; i++)
+	{
+		delete m_buttonList[i];
+	}
 }
 
 void PanelWithButtons::Draw(sf::RenderWindow * window)
 {
 	Panel::Draw(window);
-	button->Draw(window);
-	button1->Draw(window);
-	button2->Draw(window);
-	button3->Draw(window);
+
+	for (int i = 0; i < 4; i++)
+	{
+		m_buttonList[i]->Draw(window);
+	}
 }
 
 void PanelWithButtons::Update(sf::RenderWindow * window, float dt)
 {
 	Panel::Update(window, dt);
-	button->Update(window, dt);
-	button1->Update(window, dt);
-	button2->Update(window, dt);
-	button3->Update(window, dt);
+
+	for (int i = 0; i < 4; i++)
+	{
+		m_buttonList[i]->Update(window, dt);
+	}
 }

@@ -12,6 +12,8 @@ m_type(type)
 	m_level = new Stat("Level", 1, 100);
 	m_exp = new Stat("XP", 0, 100);
 
+	m_font.loadFromFile("Fonts/kenpixel_high_square.ttf");
+
 	SetCharacter();
 	
 	m_sprite.setOrigin(m_sprite.getScale().x * 0.5f, m_sprite.getScale().y * 0.5f); 
@@ -25,6 +27,7 @@ Character::~Character()
 void Character::Update(sf::RenderWindow* window, float dt)
 {
 	GameObject::Update(window, dt);
+	ShowStats(window);
 }
 
 void Character::Draw(sf::RenderWindow* window)
@@ -49,7 +52,7 @@ void Character::SetCharacter()
 		break;
 
 	case CharacterType::Tifa:
-		m_sprite.setTextureRect(sf::IntRect(490, 0, 240, 230)); //Tifa
+		m_sprite.setTextureRect(sf::IntRect(490, 0, 240, 210)); //Tifa
 		break;
 
 	case CharacterType::CaitSith:
@@ -72,4 +75,15 @@ void Character::SetCharacter()
 		m_sprite.setTextureRect(sf::IntRect(470, 410, 180, 180)); //Tifa
 		break;
 	}
+}
+
+void Character::ShowStats(sf::RenderWindow* window)
+{
+	sf::Text health;
+	health.setFont(m_font);
+	health.setString("HP: " + std::to_string((int)m_health->GetCurrent()) + " / " + std::to_string((int)m_health->GetMax()));
+	health.setPosition(sf::Vector2f(50, 510));
+	health.setColor(sf::Color::Black);
+	window->draw(health);
+
 }

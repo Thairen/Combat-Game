@@ -6,7 +6,6 @@ Game::Game()
 {
 	tex.loadFromFile("Sprites/forest.jpg");
 	background.setTexture(tex);
-
 	background.setScale(2.0f, 2.0f);
 	background.setPosition(sf::Vector2f(50, 0));
 
@@ -17,31 +16,31 @@ Game::Game()
 	AddObject(c1);
 	c1->m_sprite.setScale(-0.8f, 0.8f);
 
-	c2 = new Character(CharacterType::Vincent, sf::Vector2f(1000.f, 350.f));
+	c2 = new Character(CharacterType::Tifa, sf::Vector2f(1000.f, 350.f));
 	AddObject(c2);
 	c2->m_sprite.setScale(0.8f, 0.8f);
 
-	panel = new PanelWithButtons(sf::Vector2f(50,510));
-	panel->m_sprite.setScale(4.0f, 2.0f);
-	AddObject(panel);
-
-	enemyPanel = new Panel(sf::Vector2f(820, 510));
-	enemyPanel->m_sprite.setScale(4.0f, 2.0f);
+	enemyPanel = new Panel(sf::Vector2f(950, 510));
+	enemyPanel->m_sprite.setScale(2.0f, 2.0f);
 	AddObject(enemyPanel);
 }
 void Game::Draw(sf::RenderWindow * window)
 {	
 	window->draw(background);
+	m_player->Draw(window);
 
 	for (int i = 0; i < m_gameObjects.size(); i++)
 	{
 		GameObject* current = m_gameObjects[i];
 		current->Draw(window);
 	}
+
+	
 }
 
 void Game::Update(sf::RenderWindow * window, float dt)
 {
+	m_player->Update(window, dt);
 	//Check and delete destroyed objects
 	for (int i = m_gameObjects.size() - 1; i >= 0; i--)
 	{
@@ -59,6 +58,8 @@ void Game::Update(sf::RenderWindow * window, float dt)
 		GameObject* current = m_gameObjects[i];
 		current->Update(window, dt);
 	}
+	
+	
 }
 
 void Game::AddObject(GameObject * object)
