@@ -6,13 +6,14 @@ Character::Character(CharacterType type, const sf::Vector2f & pos) : GameObject(
 m_type(type)
 {
 	//Extend these into a vector of stats? (More convienant to work with? IE COMPONENT SYSTEM
-	m_health = new Stat("Health", 50, 50);
-	m_strength = new Stat("Strength", 10, 10);
-	m_defense = new Stat("Defense", 10, 10);
+	m_health = new Stat("Health", 50, rand() % 30 + 10);
+	m_strength = new Stat("Strength", 10, rand() % 7 + 5);
+	m_defense = new Stat("Defense", 10, rand() % 5 + 5);
 	m_level = new Stat("Level", 1, 100);
 	m_exp = new Stat("XP", 0, 100);
 
-	m_font.loadFromFile("Fonts/kenpixel_high_square.ttf");
+	m_panel = new PanelWithStats(sf::Vector2f(this->GetPosition().x - 200, this->GetPosition().y + 160), this);
+	m_panel->m_sprite.setScale(2.0f, 2.0f);
 
 	SetCharacter();
 	
@@ -26,13 +27,51 @@ Character::~Character()
 
 void Character::Update(sf::RenderWindow* window, float dt)
 {
+	m_panel->Update(window, dt);
 	GameObject::Update(window, dt);
-	ShowStats(window);
+	
 }
 
 void Character::Draw(sf::RenderWindow* window)
 {
 	GameObject::Draw(window);
+	m_panel->Draw(window);
+}
+
+float Character::GetCurrent(std::string desired)
+{
+	float result;
+
+	if (desired == "Health")
+		result = m_health->GetCurrent();
+	if (desired == "Strength")
+		result = m_strength->GetCurrent();
+	if (desired == "Defense")
+		result = m_defense->GetCurrent();
+	if (desired == "Level")
+		result = m_level->GetCurrent();
+	if (desired == "XP")
+		result = m_exp->GetCurrent();
+
+	return result;
+}
+
+float Character::GetMax(std::string desired)
+{
+	float result;
+
+	if (desired == "Health")
+		result = m_health->GetMax();
+	if (desired == "Strength")
+		result = m_strength->GetMax();
+	if (desired == "Defense")
+		result = m_defense->GetMax();
+	if (desired == "Level")
+		result = m_level->GetMax();
+	if (desired == "XP")
+		result = m_exp->GetMax();
+
+	return result;
 }
 
 void Character::SetCharacter()
@@ -41,49 +80,47 @@ void Character::SetCharacter()
 	{
 	case CharacterType::Aerith:
 		m_sprite.setTextureRect(sf::IntRect(0, 200, 190, 180)); //Aerith
+		m_name = "Aerith";
 		break;
 
 	case CharacterType::Cloud:
 		m_sprite.setTextureRect(sf::IntRect(0, 0, 230, 200)); //Cloud
+		m_name = "Cloud";
 		break;
 
 	case CharacterType::Barrett:
 		m_sprite.setTextureRect(sf::IntRect(220, 0, 240, 230)); //Barrett
+		m_name = "Barrett";
 		break;
 
 	case CharacterType::Tifa:
 		m_sprite.setTextureRect(sf::IntRect(490, 0, 240, 210)); //Tifa
+		m_name = "Tifa";
 		break;
 
 	case CharacterType::CaitSith:
 		m_sprite.setTextureRect(sf::IntRect(0, 380, 260, 230)); //CaitSith
+		m_name = "Cait Sith";
 		break;
 
 	case CharacterType::RedX:
 		m_sprite.setTextureRect(sf::IntRect(240, 220, 270, 160)); //RedXIII
+		m_name = "Red XIII";
 		break;
 
 	case CharacterType::Yuffie:
 		m_sprite.setTextureRect(sf::IntRect(500, 200, 230, 200)); //Tifa
+		m_name = "Yuffie";
 		break;
 
 	case CharacterType::Cid:
 		m_sprite.setTextureRect(sf::IntRect(280, 420, 200, 180)); //Cid
+		m_name = "Cid";
 		break;
 
 	case CharacterType::Vincent:
-		m_sprite.setTextureRect(sf::IntRect(470, 410, 180, 180)); //Tifa
+		m_sprite.setTextureRect(sf::IntRect(470, 410, 180, 180)); //Vindent
+		m_name = "Vincent";
 		break;
 	}
-}
-
-void Character::ShowStats(sf::RenderWindow* window)
-{
-	sf::Text health;
-	health.setFont(m_font);
-	health.setString("HP: " + std::to_string((int)m_health->GetCurrent()) + " / " + std::to_string((int)m_health->GetMax()));
-	health.setPosition(sf::Vector2f(50, 510));
-	health.setColor(sf::Color::Black);
-	window->draw(health);
-
 }

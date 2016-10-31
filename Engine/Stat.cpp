@@ -4,6 +4,8 @@
 
 Stat::Stat(std::string id, float current, float max) : m_id(id), m_current(current), m_max(max)
 {
+	if (current > max)
+		m_current = m_max;
 }
 
 void Stat::SubtractCurrent(float val)

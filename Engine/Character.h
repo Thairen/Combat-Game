@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "SFML\Graphics.hpp"
 #include "Stat.h"
+#include "Panel.h"
 #include <vector>
 
 //Temp
@@ -27,18 +28,22 @@ public:
 	virtual void Update(sf::RenderWindow* window, float dt);
 	virtual void Draw(sf::RenderWindow* window);
 
+	float GetCurrent(std::string desired);
+	float GetMax(std::string desired);
+
 	void SetCharacter(); //Set the sprite rect depending on type
 
-	void ShowStats(sf::RenderWindow* window);
-
+	std::string m_name; // Make a getter or something, just fix the reason this isnt private
 private:
+
+	
 	Stat* m_health;
 	Stat* m_strength;
 	Stat* m_defense;
 	Stat* m_level;
 	Stat* m_exp;
 
-	sf::Font m_font;
+	PanelWithStats* m_panel;
 
 	//std::vector<Stat*> m_stats;  Preffered way to store stats
 

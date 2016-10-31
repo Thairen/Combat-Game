@@ -29,6 +29,4 @@ private:
 
 	Character* c1; // Belongs in player's fighter list
 	Character* c2; // Belongs in AI's fighter list
-
-	Panel* enemyPanel; //Belongs with AI
 };

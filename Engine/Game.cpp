@@ -12,17 +12,14 @@ Game::Game()
 	m_mainFont.loadFromFile("Fonts/kenpixel_high_square.ttf");
 	m_player = new Player(500.f,Location::Main_Menu);
 
-	c1 = new Character(CharacterType::Yuffie, sf::Vector2f(250.f, 350.f));
+	c1 = new Character(CharacterType::Aerith, sf::Vector2f(250.f, 350.f));
 	AddObject(c1);
 	c1->m_sprite.setScale(-0.8f, 0.8f);
+	m_player->AddCharacter(c1);
 
-	c2 = new Character(CharacterType::Tifa, sf::Vector2f(1000.f, 350.f));
+	c2 = new Character(CharacterType::Cloud, sf::Vector2f(1000.f, 350.f));
 	AddObject(c2);
 	c2->m_sprite.setScale(0.8f, 0.8f);
-
-	enemyPanel = new Panel(sf::Vector2f(950, 510));
-	enemyPanel->m_sprite.setScale(2.0f, 2.0f);
-	AddObject(enemyPanel);
 }
 void Game::Draw(sf::RenderWindow * window)
 {	

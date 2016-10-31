@@ -30,7 +30,7 @@ private:
 
 	//Inventory* m_inventory; Player's inventory (to be decided what player specific items) may not be needed
 
-	Panel* m_panel;
+	PanelWithStats* m_panel;
 	PanelWithButtons* m_actionPanel;
 
 	Location m_location; // Tell the game where the player is
