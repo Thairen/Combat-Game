@@ -2,7 +2,9 @@
 #include "GameObject.h"
 #include "SFML\Graphics.hpp"
 #include "Stat.h"
+#include <vector>
 
+//Temp
 enum class CharacterType
 {
 	Cloud,
@@ -25,8 +27,7 @@ public:
 	virtual void Update(sf::RenderWindow* window, float dt);
 	virtual void Draw(sf::RenderWindow* window);
 
-	void SetCharacter();
-	
+	void SetCharacter(); //Set the sprite rect depending on type
 
 private:
 	Stat* m_health;
@@ -35,6 +36,14 @@ private:
 	Stat* m_level;
 	Stat* m_exp;
 
+	//std::vector<Stat*> m_stats;  Preffered way to store stats
+
+	//Inventory* m_inventory Will have vector<Item*>
+
+	//May need to extend to equipped, IE std::vector<Item*> m_equippedItems
+	//Maybe better as an Array since amount of equipped items will be known
+
+	//Temporary till perm Sprites added
 	CharacterType m_type;
 };
 

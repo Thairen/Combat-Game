@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Character.h"
 #include "Clickable.h"
+#include "Panel.h"
 
 class Game
 {
@@ -23,15 +24,12 @@ private:
 
 	//Temporary variables for testing purposes....
 
-	sf::Texture tex;
-	sf::Sprite background;
+	sf::Texture tex; //May stay
+	sf::Sprite background; // ""
 
-	Character* c1;
-	Character* c2;
+	Character* c1; // Belongs in player's fighter list
+	Character* c2; // Belongs in AI's fighter list
 
-	Clickable* button;
-	Clickable* button1;
-	Clickable* button2;
-	Clickable* button3;
-
+	PanelWithButtons* panel; // Belongs on Player
+	Panel* enemyPanel; //Belongs with AI
 };

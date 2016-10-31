@@ -13,26 +13,21 @@ Game::Game()
 	m_mainFont.loadFromFile("Fonts/kenpixel_high_square.ttf");
 	m_player = new Player(500.f,Location::Main_Menu);
 
-	c1 = new Character(CharacterType::Vincent, sf::Vector2f(250.f, 350.f));
+	c1 = new Character(CharacterType::Yuffie, sf::Vector2f(250.f, 350.f));
 	AddObject(c1);
 	c1->m_sprite.setScale(-0.8f, 0.8f);
 
-	c2 = new Character(CharacterType::Aerith, sf::Vector2f(1000.f, 350.f));
+	c2 = new Character(CharacterType::Vincent, sf::Vector2f(1000.f, 350.f));
 	AddObject(c2);
 	c2->m_sprite.setScale(0.8f, 0.8f);
 
-	button = new Clickable(sf::Vector2f(50.f, 575.f), "Attack");
-	AddObject(button);
+	panel = new PanelWithButtons(sf::Vector2f(50,510));
+	panel->m_sprite.setScale(4.0f, 2.0f);
+	AddObject(panel);
 
-	button1 = new Clickable(sf::Vector2f(50.f, 630.f), "Defend");
-	AddObject(button1);
-
-	button2 = new Clickable(sf::Vector2f(250.f, 575.f), "Items");
-	AddObject(button2);
-
-	button2 = new Clickable(sf::Vector2f(250.f, 630.f), "Escape");
-	AddObject(button2);
-
+	enemyPanel = new Panel(sf::Vector2f(820, 510));
+	enemyPanel->m_sprite.setScale(4.0f, 2.0f);
+	AddObject(enemyPanel);
 }
 void Game::Draw(sf::RenderWindow * window)
 {	

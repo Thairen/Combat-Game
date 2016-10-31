@@ -5,6 +5,7 @@
 Character::Character(CharacterType type, const sf::Vector2f & pos) : GameObject("Sprites/chars.png", pos),
 m_type(type)
 {
+	//Extend these into a vector of stats? (More convienant to work with? IE COMPONENT SYSTEM
 	m_health = new Stat("Health", 50, 50);
 	m_strength = new Stat("Strength", 10, 10);
 	m_defense = new Stat("Defense", 10, 10);
@@ -18,7 +19,7 @@ m_type(type)
 
 Character::~Character()
 {
-	delete m_health, m_strength, m_defense, m_level, m_exp;
+	delete m_health, m_strength, m_defense, m_level, m_exp; //Delete them pointers (vector of stats more convienant for sure here
 }
 
 void Character::Update(sf::RenderWindow* window, float dt)
@@ -56,7 +57,7 @@ void Character::SetCharacter()
 		break;
 
 	case CharacterType::RedX:
-		m_sprite.setTextureRect(sf::IntRect(240, 220, 270, 150)); //RedXIII
+		m_sprite.setTextureRect(sf::IntRect(240, 220, 270, 160)); //RedXIII
 		break;
 
 	case CharacterType::Yuffie:
