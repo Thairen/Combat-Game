@@ -15,6 +15,9 @@ m_type(type)
 	m_panel = new PanelWithStats(sf::Vector2f(this->GetPosition().x - 200, this->GetPosition().y + 160), this);
 	m_panel->m_sprite.setScale(2.0f, 2.0f);
 
+	m_buttonPanel = new PanelWithButtons(sf::Vector2f(this->GetPosition().x , this->GetPosition().y + 160), this);
+	m_buttonPanel->m_sprite.setScale(2.0, 2.0);
+
 	SetCharacter();
 	
 	m_sprite.setOrigin(m_sprite.getScale().x * 0.5f, m_sprite.getScale().y * 0.5f); 
@@ -28,14 +31,15 @@ Character::~Character()
 void Character::Update(sf::RenderWindow* window, float dt)
 {
 	m_panel->Update(window, dt);
+	m_buttonPanel->Update(window, dt);
 	GameObject::Update(window, dt);
-	
 }
 
 void Character::Draw(sf::RenderWindow* window)
 {
 	GameObject::Draw(window);
 	m_panel->Draw(window);
+	m_buttonPanel->Draw(window);
 }
 
 float Character::GetCurrent(std::string desired)
@@ -44,12 +48,16 @@ float Character::GetCurrent(std::string desired)
 
 	if (desired == "Health")
 		result = m_health->GetCurrent();
+
 	if (desired == "Strength")
 		result = m_strength->GetCurrent();
+
 	if (desired == "Defense")
 		result = m_defense->GetCurrent();
+
 	if (desired == "Level")
 		result = m_level->GetCurrent();
+
 	if (desired == "XP")
 		result = m_exp->GetCurrent();
 
@@ -62,12 +70,16 @@ float Character::GetMax(std::string desired)
 
 	if (desired == "Health")
 		result = m_health->GetMax();
+
 	if (desired == "Strength")
 		result = m_strength->GetMax();
+
 	if (desired == "Defense")
 		result = m_defense->GetMax();
+
 	if (desired == "Level")
 		result = m_level->GetMax();
+
 	if (desired == "XP")
 		result = m_exp->GetMax();
 
@@ -119,7 +131,7 @@ void Character::SetCharacter()
 		break;
 
 	case CharacterType::Vincent:
-		m_sprite.setTextureRect(sf::IntRect(470, 410, 180, 180)); //Vindent
+		m_sprite.setTextureRect(sf::IntRect(470, 410, 180, 180)); //Vincent
 		m_name = "Vincent";
 		break;
 	}

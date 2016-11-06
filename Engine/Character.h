@@ -44,6 +44,9 @@ private:
 	Stat* m_exp;
 
 	PanelWithStats* m_panel;
+	PanelWithButtons* m_buttonPanel;
+
+
 
 	//std::vector<Stat*> m_stats;  Preffered way to store stats
 
