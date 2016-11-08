@@ -1,8 +1,10 @@
 #include "Panel.h"
 #include "Character.h"
+#include "Clickable.h"
 
 
-Panel::Panel(const sf::Vector2f& pos) : GameObject("Sprites/UI.png", pos)
+Panel::Panel(const sf::Vector2f& pos, Character* owner) : GameObject("Sprites/UI.png", pos),
+m_owner(owner)
 {
 	m_sprite.setTextureRect(sf::IntRect(190, 100, 100, 100));
 	m_sprite.setOrigin(m_sprite.getScale().x * 0.5f, m_sprite.getScale().y * 0.5f);
@@ -18,15 +20,15 @@ void Panel::Update(sf::RenderWindow * window, float dt)
 	GameObject::Update(window, dt);
 }
 
-PanelWithButtons::PanelWithButtons(const sf::Vector2f& pos) : Panel(pos)
+PanelWithButtons::PanelWithButtons(const sf::Vector2f& pos, Character* owner) : Panel(pos, owner)
 {
-	m_buttonList[0] = new Clickable(sf::Vector2f(this->GetPosition().x + 20, this->GetPosition().y + 10), "Attack");
+	m_buttonList[0] = new Clickable(sf::Vector2f(this->GetPosition().x + 20, this->GetPosition().y + 10), ButtonType::Attack, owner);
 
-	m_buttonList[1] = new Clickable(sf::Vector2f(this->GetPosition().x + 20, this->GetPosition().y+ 55), "Defend");
+	m_buttonList[1] = new Clickable(sf::Vector2f(this->GetPosition().x + 20, this->GetPosition().y+ 55), ButtonType::Skill, owner);
 
-	m_buttonList[2] = new Clickable(sf::Vector2f(this->GetPosition().x + 20, this->GetPosition().y + 100), "Items");
+	m_buttonList[2] = new Clickable(sf::Vector2f(this->GetPosition().x + 20, this->GetPosition().y + 100), ButtonType::Item, owner);
 
-	m_buttonList[3] = new Clickable(sf::Vector2f(this->GetPosition().x + 20, this->GetPosition().y + 145), "Escape");
+	m_buttonList[3] = new Clickable(sf::Vector2f(this->GetPosition().x + 20, this->GetPosition().y + 145), ButtonType::Escape, owner);
 
 }
 
@@ -58,16 +60,9 @@ void PanelWithButtons::Update(sf::RenderWindow * window, float dt)
 	}
 }
 
-PanelWithStats::PanelWithStats(const sf::Vector2f & pos, Character* owner) : Panel(pos),
-m_owner(owner)
+PanelWithStats::PanelWithStats(const sf::Vector2f & pos, Character* owner) : Panel(pos, owner)
 {
 	m_font.loadFromFile("Fonts/kenpixel_high_square.ttf");
-
-	//Find a way to move the panel!!! (Get it under the enemy character)
-	//if (owner->m_sprite.getScale().x > 0)
-	//{   
-	//	this->SetPos(sf::Vector2f(this->GetPosition().x + 150, this->GetPosition().y));
-	//}
 }
 
 PanelWithStats::~PanelWithStats()

@@ -8,5 +8,9 @@ public:
 
 	virtual void Update(sf::RenderWindow* window, float dt);
 	virtual void Draw(sf::RenderWindow* window);
+
+private:
+
+	Character* starter;
 };
 

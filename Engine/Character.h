@@ -6,6 +6,7 @@
 #include <vector>
 
 class Owner;
+class Character;
 
 //Temp
 enum class CharacterType
@@ -32,6 +33,9 @@ public:
 
 	float GetCurrent(std::string desired);
 	float GetMax(std::string desired);
+
+	float Attack();
+	void TakeDamage(float dmg);
 
 	void SetOwner(Owner* owner);
 

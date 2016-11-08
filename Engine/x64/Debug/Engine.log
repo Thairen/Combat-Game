@@ -1,5 +1,2 @@
-﻿  Character.cpp
-c:\users\aicaoc\desktop\combat-game\engine\character.cpp(10): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\aicaoc\desktop\combat-game\engine\character.cpp(11): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\aicaoc\desktop\combat-game\engine\character.cpp(12): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  Arena.cpp
   Engine.vcxproj -> C:\Users\aicaoc\Desktop\Combat-Game\Engine\x64\Debug\Engine.exe

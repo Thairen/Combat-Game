@@ -24,11 +24,6 @@ private:
 	Player* m_player;
 	Enemy* m_ai;
 
-	//Temporary variables for testing purposes....
-
 	sf::Texture tex; //May stay
 	sf::Sprite background; // ""
-
-	Character* c1; // Belongs in player's fighter list
-	Character* c2; // Belongs in AI's fighter list
 };

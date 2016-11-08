@@ -3,6 +3,7 @@
 #include "Enemy.h"
 
 
+
 Character::Character(CharacterType type, const sf::Vector2f & pos, Owner* owner) : GameObject("Sprites/chars.png", pos),
 m_type(type)
 {
@@ -89,6 +90,18 @@ float Character::GetMax(std::string desired)
 		result = m_exp->GetMax();
 
 	return result;
+}
+
+float Character::Attack()
+{
+	return m_strength->GetCurrent();
+}
+
+void Character::TakeDamage(float dmg)
+{
+	 dmg -= m_defense->GetCurrent();
+
+	 m_health->SubtractCurrent(dmg);
 }
 
 void Character::SetOwner(Owner * owner)

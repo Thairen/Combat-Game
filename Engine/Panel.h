@@ -1,17 +1,18 @@
 #pragma once
 #include "GameObject.h"
-#include "Clickable.h"
-
-
 class Character;
+class Clickable;
 
 class Panel : public GameObject
 {
 public:
-	Panel(const sf::Vector2f& pos);
+	Panel(const sf::Vector2f& pos, Character* owner);
 	
 	virtual void Draw(sf::RenderWindow* window);
 	virtual void Update(sf::RenderWindow* window, float dt);
+
+protected:
+	Character* m_owner;
 };
 
 
@@ -21,7 +22,7 @@ class PanelWithButtons : public Panel
 	//Modify buttons to set the position relative to the panel
 public:
 
-	PanelWithButtons(const sf::Vector2f& pos);
+	PanelWithButtons(const sf::Vector2f& pos, Character* owner);
 	~PanelWithButtons();
 
 	virtual void Draw(sf::RenderWindow* window);
@@ -45,8 +46,6 @@ public:
 	void ShowStats(sf::RenderWindow* window);
 
 private:
-
-	Character* m_owner;
 	sf::Font m_font;
 	sf::Text name;
 	sf::Text health;

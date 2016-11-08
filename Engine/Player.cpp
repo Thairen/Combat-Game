@@ -2,7 +2,13 @@
 
 Player::Player(const sf::Vector2f& pos, float gold, Location loc) : Owner(pos), m_gold(gold), m_location(loc)
 {
-	m_actionPanel = new PanelWithButtons(sf::Vector2f(250, 510));
+	//TEMP ============== Panel requires a character to Initilize. FIX ================================
+	starter = new Character(CharacterType::Yuffie, sf::Vector2f(250.f, 350.f), this);
+	starter->m_sprite.setScale(-0.8f, 0.8f);
+	this->AddCharacter(starter);
+	//=================================================================================================
+
+	m_actionPanel = new PanelWithButtons(sf::Vector2f(250, 510), m_characterList[0]);
 	m_actionPanel->m_sprite.setScale(2.0, 2.0);
 }
 
