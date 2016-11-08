@@ -8,14 +8,10 @@ class Character;
 class Panel : public GameObject
 {
 public:
-	Panel(const sf::Vector2f& pos, Character* owner);
+	Panel(const sf::Vector2f& pos);
 	
 	virtual void Draw(sf::RenderWindow* window);
 	virtual void Update(sf::RenderWindow* window, float dt);
-
-protected:
-
-	Character* m_owner;
 };
 
 
@@ -25,7 +21,7 @@ class PanelWithButtons : public Panel
 	//Modify buttons to set the position relative to the panel
 public:
 
-	PanelWithButtons(const sf::Vector2f& pos, Character* owner);
+	PanelWithButtons(const sf::Vector2f& pos);
 	~PanelWithButtons();
 
 	virtual void Draw(sf::RenderWindow* window);
@@ -47,8 +43,6 @@ public:
 	virtual void Update(sf::RenderWindow* window, float dt);
 
 	void ShowStats(sf::RenderWindow* window);
-
-	void SetOwningCharacter(Character* character);
 
 private:
 

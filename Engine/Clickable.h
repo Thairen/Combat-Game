@@ -9,6 +9,7 @@ public:
 
 	virtual void Update(sf::RenderWindow* window, float dt);
 	virtual void Draw(sf::RenderWindow* window);
+	std::string GetType() { return m_type; }
 
 	void Hovering(sf::RenderWindow* window);
 	void Clicked();

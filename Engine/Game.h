@@ -5,6 +5,7 @@
 #include "Character.h"
 #include "Clickable.h"
 #include "Panel.h"
+#include "Enemy.h"
 
 class Game
 {
@@ -21,6 +22,7 @@ private:
 	bool m_gameOver;
 	sf::Font m_mainFont;
 	Player* m_player;
+	Enemy* m_ai;
 
 	//Temporary variables for testing purposes....
 

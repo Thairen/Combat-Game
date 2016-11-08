@@ -5,6 +5,8 @@
 #include "Panel.h"
 #include <vector>
 
+class Owner;
+
 //Temp
 enum class CharacterType
 {
@@ -22,7 +24,7 @@ enum class CharacterType
 class Character : public GameObject
 {
 public:
-	Character(CharacterType type, const sf::Vector2f & pos);
+	Character(CharacterType type, const sf::Vector2f & pos, Owner* owner);
 	~Character();
 
 	virtual void Update(sf::RenderWindow* window, float dt);
@@ -31,12 +33,15 @@ public:
 	float GetCurrent(std::string desired);
 	float GetMax(std::string desired);
 
+	void SetOwner(Owner* owner);
+
 	void SetCharacter(); //Set the sprite rect depending on type
 
 	std::string m_name; // Make a getter or something, just fix the reason this isnt private
+
 private:
 
-	
+	Owner* m_owner;
 	Stat* m_health;
 	Stat* m_strength;
 	Stat* m_defense;
@@ -44,9 +49,6 @@ private:
 	Stat* m_exp;
 
 	PanelWithStats* m_panel;
-	PanelWithButtons* m_buttonPanel;
-
-
 
 	//std::vector<Stat*> m_stats;  Preffered way to store stats
 

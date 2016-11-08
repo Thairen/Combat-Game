@@ -2,8 +2,7 @@
 #include "Character.h"
 
 
-Panel::Panel(const sf::Vector2f& pos, Character* owner) : GameObject("Sprites/UI.png", pos),
-m_owner(owner)
+Panel::Panel(const sf::Vector2f& pos) : GameObject("Sprites/UI.png", pos)
 {
 	m_sprite.setTextureRect(sf::IntRect(190, 100, 100, 100));
 	m_sprite.setOrigin(m_sprite.getScale().x * 0.5f, m_sprite.getScale().y * 0.5f);
@@ -19,7 +18,7 @@ void Panel::Update(sf::RenderWindow * window, float dt)
 	GameObject::Update(window, dt);
 }
 
-PanelWithButtons::PanelWithButtons(const sf::Vector2f& pos, Character* owner) : Panel(pos, owner)
+PanelWithButtons::PanelWithButtons(const sf::Vector2f& pos) : Panel(pos)
 {
 	m_buttonList[0] = new Clickable(sf::Vector2f(this->GetPosition().x + 20, this->GetPosition().y + 10), "Attack");
 
@@ -59,7 +58,7 @@ void PanelWithButtons::Update(sf::RenderWindow * window, float dt)
 	}
 }
 
-PanelWithStats::PanelWithStats(const sf::Vector2f & pos, Character* owner) : Panel(pos, owner),
+PanelWithStats::PanelWithStats(const sf::Vector2f & pos, Character* owner) : Panel(pos),
 m_owner(owner)
 {
 	m_font.loadFromFile("Fonts/kenpixel_high_square.ttf");
@@ -117,9 +116,4 @@ void PanelWithStats::ShowStats(sf::RenderWindow * window)
 	level.setPosition(this->GetPosition().x + 25, this->GetPosition().y + 140);
 	level.setColor(sf::Color::Black);
 	window->draw(level);
-}
-
-void PanelWithStats::SetOwningCharacter(Character * character)
-{
-	m_owner = character;
 }

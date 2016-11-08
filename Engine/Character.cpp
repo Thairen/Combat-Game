@@ -1,8 +1,9 @@
 #include "Character.h"
+#include "Owner.h"
+#include "Enemy.h"
 
 
-
-Character::Character(CharacterType type, const sf::Vector2f & pos) : GameObject("Sprites/chars.png", pos),
+Character::Character(CharacterType type, const sf::Vector2f & pos, Owner* owner) : GameObject("Sprites/chars.png", pos),
 m_type(type)
 {
 	//Extend these into a vector of stats? (More convienant to work with? IE COMPONENT SYSTEM
@@ -15,12 +16,18 @@ m_type(type)
 	m_panel = new PanelWithStats(sf::Vector2f(this->GetPosition().x - 200, this->GetPosition().y + 160), this);
 	m_panel->m_sprite.setScale(2.0f, 2.0f);
 
-	m_buttonPanel = new PanelWithButtons(sf::Vector2f(this->GetPosition().x , this->GetPosition().y + 160), this);
-	m_buttonPanel->m_sprite.setScale(2.0, 2.0);
-
 	SetCharacter();
 	
 	m_sprite.setOrigin(m_sprite.getScale().x * 0.5f, m_sprite.getScale().y * 0.5f); 
+
+	SetOwner(owner);
+
+	Enemy* enemy = dynamic_cast<Enemy*>(owner);
+
+	if (enemy)
+	{
+		m_panel->SetPos(sf::Vector2f(this->GetPosition().x, this->GetPosition().y + 160));
+	}
 }
 
 Character::~Character()
@@ -31,7 +38,6 @@ Character::~Character()
 void Character::Update(sf::RenderWindow* window, float dt)
 {
 	m_panel->Update(window, dt);
-	m_buttonPanel->Update(window, dt);
 	GameObject::Update(window, dt);
 }
 
@@ -39,7 +45,6 @@ void Character::Draw(sf::RenderWindow* window)
 {
 	GameObject::Draw(window);
 	m_panel->Draw(window);
-	m_buttonPanel->Draw(window);
 }
 
 float Character::GetCurrent(std::string desired)
@@ -84,6 +89,13 @@ float Character::GetMax(std::string desired)
 		result = m_exp->GetMax();
 
 	return result;
+}
+
+void Character::SetOwner(Owner * owner)
+{
+	m_owner = owner;
+
+	owner->AddCharacter(this);
 }
 
 void Character::SetCharacter()

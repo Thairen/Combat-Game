@@ -1,7 +1,6 @@
 #pragma once
-#include <vector>
-#include "Character.h"
 #include "Panel.h"
+#include "Owner.h"
 
 //Sample Locations (to be fixed with a state machine)
 /////////////////////////////////////////////////////
@@ -14,25 +13,20 @@ enum class Location
 
 /////////////////////////////////////////////////////
 
-class Player
+class Player : public Owner
 {
 public:
-	Player(float gold, Location loc);
+	Player(const sf::Vector2f& pos, float gold, Location loc);
 
-	void Update(sf::RenderWindow* window, float dt);
-	void Draw(sf::RenderWindow* window);
-
-	void AddCharacter(Character* character);
+	virtual void Update(sf::RenderWindow* window, float dt);
+	virtual void Draw(sf::RenderWindow* window);
 
 private:
 	float m_gold; // $$ yall
-	std::vector<Character*> m_characterList; // List of the player's characters
 
 	//Inventory* m_inventory; Player's inventory (to be decided what player specific items) may not be needed
-
-	PanelWithStats* m_panel;
 	PanelWithButtons* m_actionPanel;
 
-	Location m_location; // Tell the game where the player is
+	Location m_location;
 };
 
