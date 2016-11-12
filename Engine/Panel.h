@@ -11,8 +11,11 @@ public:
 	virtual void Draw(sf::RenderWindow* window);
 	virtual void Update(sf::RenderWindow* window, float dt);
 
+	void SetVisible(bool t) { m_isVisible = t; }
+
 protected:
 	Character* m_owner;
+	bool m_isVisible;
 };
 
 

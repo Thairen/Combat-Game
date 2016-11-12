@@ -13,6 +13,8 @@ public:
 
 	void AddCharacter(Character* character);
 
+	Character* m_selectedCharacter[1]; //Extend later for larger combat scenarios....
+
 protected:
 	std::vector<Character*> m_characterList; // List of the player's characters
 };

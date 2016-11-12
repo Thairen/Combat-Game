@@ -17,6 +17,9 @@ m_type(type)
 	m_panel = new PanelWithStats(sf::Vector2f(this->GetPosition().x - 200, this->GetPosition().y + 160), this);
 	m_panel->m_sprite.setScale(2.0f, 2.0f);
 
+	m_buttonPanel = new PanelWithButtons(sf::Vector2f(this->GetPosition().x, this->GetPosition().y + 160), this);
+	m_buttonPanel->m_sprite.setScale(2.0f, 2.0f);
+
 	SetCharacter();
 	
 	m_sprite.setOrigin(m_sprite.getScale().x * 0.5f, m_sprite.getScale().y * 0.5f); 
@@ -28,6 +31,7 @@ m_type(type)
 	if (enemy)
 	{
 		m_panel->SetPos(sf::Vector2f(this->GetPosition().x, this->GetPosition().y + 160));
+		m_buttonPanel->SetVisible(false);
 	}
 }
 
@@ -39,6 +43,7 @@ Character::~Character()
 void Character::Update(sf::RenderWindow* window, float dt)
 {
 	m_panel->Update(window, dt);
+	m_buttonPanel->Update(window, dt);
 	GameObject::Update(window, dt);
 }
 
@@ -46,6 +51,7 @@ void Character::Draw(sf::RenderWindow* window)
 {
 	GameObject::Draw(window);
 	m_panel->Draw(window);
+	m_buttonPanel->Draw(window);
 }
 
 float Character::GetCurrent(std::string desired)

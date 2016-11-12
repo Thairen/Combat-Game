@@ -5,7 +5,7 @@
 Arena::Arena(const sf::Vector2f& pos, Character* attacker) : GameObject("", pos) //Perhaps throw backgrounds into this class?
 {
 	e = new Enemy(sf::Vector2f(0.f, 0.f)); //Init the enemy
-	player = attacker;
+	playerCharacter = attacker;
 }
 
 void Arena::Battle(Character * attacker, Character * defender)
@@ -17,13 +17,29 @@ void Arena::Battle(Character * attacker, Character * defender)
 	{
 		if (turn == 'p')
 		{
+			//player input
 			turn = 'e';
 		}
 		if (turn == 'e')
 		{
+			//enemy input
 			turn = 'p';
 		}
 	}
+}
+
+void Arena::Draw(sf::RenderWindow * window)
+{
+	GameObject::Draw(window);
+	e->Draw(window);
+}
+
+void Arena::Update(sf::RenderWindow * window, float dt)
+{
+	GameObject::Update(window, dt);
+	e->Update(window, dt);
+
+	//Battle(playerCharacter, e->m_selectedCharacter[0]);
 }
 
 

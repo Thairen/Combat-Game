@@ -1,2 +1,9 @@
-﻿  Arena.cpp
+﻿  Game.cpp
+c:\users\aicaoc\desktop\combat-game\engine\game.cpp(34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+  Compiling...
+  GameObject.cpp
+  Engine.cpp
+  Generating Code...
   Engine.vcxproj -> C:\Users\aicaoc\Desktop\Combat-Game\Engine\x64\Debug\Engine.exe
+  Engine.vcxproj -> C:\Users\aicaoc\Desktop\Combat-Game\Engine\x64\Debug\Engine.pdb (Full PDB)

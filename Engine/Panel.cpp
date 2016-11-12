@@ -4,7 +4,7 @@
 
 
 Panel::Panel(const sf::Vector2f& pos, Character* owner) : GameObject("Sprites/UI.png", pos),
-m_owner(owner)
+m_owner(owner), m_isVisible(true)
 {
 	m_sprite.setTextureRect(sf::IntRect(190, 100, 100, 100));
 	m_sprite.setOrigin(m_sprite.getScale().x * 0.5f, m_sprite.getScale().y * 0.5f);
@@ -42,21 +42,27 @@ PanelWithButtons::~PanelWithButtons()
 
 void PanelWithButtons::Draw(sf::RenderWindow * window)
 {
-	Panel::Draw(window);
-
-	for (int i = 0; i < 4; i++)
+	if (m_isVisible)
 	{
-		m_buttonList[i]->Draw(window);
+		Panel::Draw(window);
+
+		for (int i = 0; i < 4; i++)
+		{
+			m_buttonList[i]->Draw(window);
+		}
 	}
 }
 
 void PanelWithButtons::Update(sf::RenderWindow * window, float dt)
 {
-	Panel::Update(window, dt);
-
-	for (int i = 0; i < 4; i++)
+	if (m_isVisible)
 	{
-		m_buttonList[i]->Update(window, dt);
+		Panel::Update(window, dt);
+
+		for (int i = 0; i < 4; i++)
+		{
+			m_buttonList[i]->Update(window, dt);
+		}
 	}
 }
 

@@ -27,7 +27,6 @@ private:
 	Character* starter; // FIX THIS, DONT WANT A STARTER!!!
 
 	//Inventory* m_inventory; Player's inventory (to be decided what player specific items) may not be needed
-	PanelWithButtons* m_actionPanel;
 
 	Location m_location;
 };

@@ -46,15 +46,16 @@ public:
 private:
 
 	Owner* m_owner;
+
+	PanelWithStats* m_panel;
+	PanelWithButtons* m_buttonPanel;
+
+	//std::vector<Stat*> m_stats;  Preffered way to store stats
 	Stat* m_health;
 	Stat* m_strength;
 	Stat* m_defense;
 	Stat* m_level;
 	Stat* m_exp;
-
-	PanelWithStats* m_panel;
-
-	//std::vector<Stat*> m_stats;  Preffered way to store stats
 
 	//Inventory* m_inventory Will have vector<Item*>
 

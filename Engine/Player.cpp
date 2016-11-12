@@ -7,9 +7,6 @@ Player::Player(const sf::Vector2f& pos, float gold, Location loc) : Owner(pos), 
 	starter->m_sprite.setScale(-0.8f, 0.8f);
 	this->AddCharacter(starter);
 	//=================================================================================================
-
-	m_actionPanel = new PanelWithButtons(sf::Vector2f(250, 510), m_characterList[0]);
-	m_actionPanel->m_sprite.setScale(2.0, 2.0);
 }
 
 void Player::Update(sf::RenderWindow* window, float dt)
@@ -21,8 +18,6 @@ void Player::Update(sf::RenderWindow* window, float dt)
 	{
 		m_characterList[i]->Update(window, dt);
 	}
-
-	m_actionPanel->Update(window, dt);
 }
 
 void Player::Draw(sf::RenderWindow* window)
@@ -34,6 +29,4 @@ void Player::Draw(sf::RenderWindow* window)
 	{
 		m_characterList[i]->Draw(window);
 	}
-
-	m_actionPanel->Draw(window);
 }

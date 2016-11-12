@@ -2,10 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "GameObject.h"
 #include "Player.h"
-#include "Character.h"
-#include "Clickable.h"
-#include "Panel.h"
-#include "Enemy.h"
+#include "Arena.h"
 
 class Game
 {
@@ -22,7 +19,7 @@ private:
 	bool m_gameOver;
 	sf::Font m_mainFont;
 	Player* m_player;
-	Enemy* m_ai;
+	Arena* m_arena;
 
 	sf::Texture tex; //May stay
 	sf::Sprite background; // ""

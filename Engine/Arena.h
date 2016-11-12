@@ -11,8 +11,11 @@ public:
 
 	void Battle(Character* attacker, Character* defender);
 
+	virtual void Draw(sf::RenderWindow* window);
+	virtual void Update(sf::RenderWindow* window, float dt);
+
 private:
 	Enemy* e;
-	Character* player;
+	Character* playerCharacter;
 };
 

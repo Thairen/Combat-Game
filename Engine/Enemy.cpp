@@ -5,6 +5,8 @@ Enemy::Enemy(const sf::Vector2f & pos) : Owner(pos)
 	starter = new Character(CharacterType::Vincent, sf::Vector2f(1000.f, 350.f), this);
 	starter->m_sprite.setScale(0.8f, 0.8f);
 	AddCharacter(starter);
+
+	m_selectedCharacter[0] = starter;
 }
 
 Enemy::~Enemy()

@@ -11,9 +11,9 @@ Game::Game()
 
 	m_mainFont.loadFromFile("Fonts/kenpixel_high_square.ttf");
 	m_player = new Player(sf::Vector2f(0.f, 0.f), 500.f, Location::Main_Menu);
-	m_ai = new Enemy(sf::Vector2f(0.f, 0.f));
+	m_arena = new Arena(sf::Vector2f(0.f, 0.f), m_player->m_selectedCharacter[0]);
 	AddObject(m_player);
-	AddObject(m_ai);
+	AddObject(m_arena);
 }
 void Game::Draw(sf::RenderWindow * window)
 {	
