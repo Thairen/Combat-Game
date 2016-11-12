@@ -1,5 +1,7 @@
 #include "Game.h"
 #include "GameObject.h"
+#include "Player.h"
+#include "Arena.h"
 
 Game::Game()
 	: m_gameOver(false)
@@ -11,8 +13,9 @@ Game::Game()
 
 	m_mainFont.loadFromFile("Fonts/kenpixel_high_square.ttf");
 	m_player = new Player(sf::Vector2f(0.f, 0.f), 500.f, Location::Main_Menu);
-	m_arena = new Arena(sf::Vector2f(0.f, 0.f), m_player->m_selectedCharacter[0]);
 	AddObject(m_player);
+
+	m_arena = new Arena(sf::Vector2f(0.f, 0.f), m_player->m_selectedCharacter[0]);
 	AddObject(m_arena);
 }
 void Game::Draw(sf::RenderWindow * window)
@@ -30,6 +33,7 @@ void Game::Draw(sf::RenderWindow * window)
 
 void Game::Update(sf::RenderWindow * window, float dt)
 {
+
 	//Check and delete destroyed objects
 	for (int i = m_gameObjects.size() - 1; i >= 0; i--)
 	{
@@ -46,11 +50,6 @@ void Game::Update(sf::RenderWindow * window, float dt)
 	{
 		GameObject* current = m_gameObjects[i];
 		current->Update(window, dt);
-	}
-	
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-	{
-		
 	}
 	
 }

@@ -1,7 +1,6 @@
 #include "Owner.h"
 
 
-
 Owner::Owner(const sf::Vector2f& pos) : GameObject("", pos)
 {
 }

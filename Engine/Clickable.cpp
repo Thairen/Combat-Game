@@ -4,7 +4,7 @@
 
 
 Clickable::Clickable(const sf::Vector2f& pos, ButtonType buttonType, Character* owner) : GameObject("Sprites/UI.png", pos),
-m_isHovering(false), m_type(buttonType), m_owner(owner)
+m_isHovering(false), m_type(buttonType), m_owner(owner), m_isClicked(false)
 {
 	SetType(buttonType);
 	m_font.loadFromFile("Fonts/kenpixel_high_square.ttf");
@@ -88,44 +88,13 @@ void Clickable::Clicked()
 	{
 		m_sprite.setTextureRect(sf::IntRect(0, 98, 190, 45));  //Move this to when button pressed
 		m_sprite.setColor(sf::Color(0, 255, 0));
-		Action(m_type);
+		m_isClicked = true;
 	}
 
 	else
 	{
 		m_sprite.setTextureRect(sf::IntRect(0, 50, 190, 48));
-	}
-}
-
-void Clickable::Action(ButtonType buttonType)
-{
-	switch (buttonType)
-	{
-
-	case ButtonType::Attack:
-	{
-		//m_owner->Attack();
-		break;
-	}
-
-	case ButtonType::Skill:
-	{
-		//Create another panel for skill buttons
-		break;
-	}
-
-	case ButtonType::Item:
-	{
-		//Create another panel for Item buttons
-		break;
-	}
-
-	case ButtonType::Escape:
-	{
-		//m_owner->Escape();
-		break;
-	}
-
+		m_isClicked = false;
 	}
 }
 

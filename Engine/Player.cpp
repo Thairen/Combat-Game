@@ -7,6 +7,7 @@ Player::Player(const sf::Vector2f& pos, float gold, Location loc) : Owner(pos), 
 	starter->m_sprite.setScale(-0.8f, 0.8f);
 	this->AddCharacter(starter);
 	//=================================================================================================
+	m_selectedCharacter[0] = starter;
 }
 
 void Player::Update(sf::RenderWindow* window, float dt)

@@ -1,15 +1,9 @@
 #pragma once
 #include "GameObject.h"
 #include "SFML\Graphics.hpp"
-#include "Character.h"
+#include "ButtonTypes.h"
 
-enum class ButtonType
-{
-	Attack,
-	Skill,
-	Item,
-	Escape
-};
+class Character;
 
 class Clickable : public GameObject
 {
@@ -24,7 +18,7 @@ public:
 	void Hovering(sf::RenderWindow* window);
 	void Clicked();
 
-	void Action(ButtonType buttonType);
+	bool IsClicked() { return m_isClicked; }
 	
 private:
 
@@ -33,6 +27,8 @@ private:
 	std::string buttonText; // Find a cleaner way to do this?
 
 	bool m_isHovering;
+	bool m_isClicked;
+
 	sf::Text m_text;
 	sf::Font m_font;
 

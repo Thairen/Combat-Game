@@ -1,8 +1,8 @@
 #include "Character.h"
 #include "Owner.h"
 #include "Enemy.h"
-
-
+#include "Stat.h"
+#include "Panel.h"
 
 Character::Character(CharacterType type, const sf::Vector2f & pos, Owner* owner) : GameObject("Sprites/chars.png", pos),
 m_type(type)
@@ -45,6 +45,8 @@ void Character::Update(sf::RenderWindow* window, float dt)
 	m_panel->Update(window, dt);
 	m_buttonPanel->Update(window, dt);
 	GameObject::Update(window, dt);
+
+	Action(m_buttonPanel->IsSelected());
 }
 
 void Character::Draw(sf::RenderWindow* window)
@@ -165,5 +167,44 @@ void Character::SetCharacter()
 		m_sprite.setTextureRect(sf::IntRect(470, 410, 180, 180)); //Vincent
 		m_name = "Vincent";
 		break;
+	}
+}
+
+void Character::Action(ButtonType type)
+{
+	switch (type)
+	{
+
+	case ButtonType::Empty: // NO BUTTON SELECTED
+		break;
+
+	case ButtonType::Attack:
+	{
+		//this->Attack();
+		std::cout << "Attacked" << std::endl;
+		break;
+	}
+
+	case ButtonType::Skill:
+	{
+		//open skill panel
+		std::cout << "Skill" << std::endl;
+		break;
+	}
+
+	case ButtonType::Item:
+	{
+		//open item panel
+		std::cout << "Item" << std::endl;
+		break;
+	}
+
+	case ButtonType::Escape:
+	{
+		//Run behavior
+		std::cout << "Escape" << std::endl;
+		break;
+	}
+
 	}
 }

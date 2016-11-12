@@ -66,6 +66,20 @@ void PanelWithButtons::Update(sf::RenderWindow * window, float dt)
 	}
 }
 
+ButtonType PanelWithButtons::IsSelected()
+{
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (m_buttonList[i]->IsClicked()) //If button is clicked
+		{
+			return m_buttonList[i]->GetType(); // Return the type
+		}
+	}
+
+	return ButtonType::Empty; // Else return empty (NULL)
+}
+
 PanelWithStats::PanelWithStats(const sf::Vector2f & pos, Character* owner) : Panel(pos, owner)
 {
 	m_font.loadFromFile("Fonts/kenpixel_high_square.ttf");

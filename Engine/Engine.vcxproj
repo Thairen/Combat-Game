@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arena.h" />
+    <ClInclude Include="ButtonTypes.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Clickable.h" />
     <ClInclude Include="Enemy.h" />

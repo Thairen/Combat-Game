@@ -1,5 +1,6 @@
 #include "Arena.h"
-
+#include "Enemy.h"
+#include "Character.h"
 
 
 Arena::Arena(const sf::Vector2f& pos, Character* attacker) : GameObject("", pos) //Perhaps throw backgrounds into this class?

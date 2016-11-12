@@ -1,5 +1,6 @@
 #pragma once
 #include "Owner.h"
+
 class Enemy : public Owner
 {
 public:

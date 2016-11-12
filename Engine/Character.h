@@ -1,13 +1,15 @@
 #pragma once
 #include "GameObject.h"
 #include "SFML\Graphics.hpp"
-#include "Stat.h"
-#include "Panel.h"
+#include "ButtonTypes.h"
+#include <iostream>
 #include <vector>
 
+class Stat;
 class Owner;
 class Character;
-
+class PanelWithStats;
+class PanelWithButtons;
 //Temp
 enum class CharacterType
 {
@@ -40,6 +42,8 @@ public:
 	void SetOwner(Owner* owner);
 
 	void SetCharacter(); //Set the sprite rect depending on type
+
+	void Action(ButtonType type); // Does behavior based off type of button clicked.
 
 	std::string m_name; // Make a getter or something, just fix the reason this isnt private
 

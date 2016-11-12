@@ -54,6 +54,9 @@
     <ClInclude Include="Arena.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ButtonTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

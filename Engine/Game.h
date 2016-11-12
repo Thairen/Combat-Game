@@ -1,8 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "GameObject.h"
-#include "Player.h"
-#include "Arena.h"
+
+class Player;
+class Arena;
 
 class Game
 {

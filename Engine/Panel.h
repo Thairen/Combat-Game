@@ -1,7 +1,8 @@
 #pragma once
 #include "GameObject.h"
+#include "Clickable.h"
 class Character;
-class Clickable;
+
 
 class Panel : public GameObject
 {
@@ -30,6 +31,8 @@ public:
 
 	virtual void Draw(sf::RenderWindow* window);
 	virtual void Update(sf::RenderWindow* window, float dt);
+
+	ButtonType IsSelected();
 
 private:
 
