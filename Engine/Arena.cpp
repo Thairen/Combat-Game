@@ -19,11 +19,21 @@ void Arena::Battle(Character * attacker, Character * defender)
 		if (turn == 'p')
 		{
 			//player input
+			//
+			//if (Action)
+			//
+			// DoAction();
+			//
+			//Play Anim
 			turn = 'e';
 		}
 		if (turn == 'e')
 		{
 			//enemy input
+			// Random roll move
+			// DoAction();
+			//
+			// Play Anim
 			turn = 'p';
 		}
 	}

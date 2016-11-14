@@ -162,6 +162,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Managers.h" />
     <ClInclude Include="Owner.h" />
     <ClInclude Include="Panel.h" />
     <ClInclude Include="Player.h" />
@@ -177,6 +178,7 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Managers.cpp" />
     <ClCompile Include="Owner.cpp" />
     <ClCompile Include="Panel.cpp" />
     <ClCompile Include="Player.cpp" />

@@ -3,8 +3,7 @@
 Player::Player(const sf::Vector2f& pos, float gold, Location loc) : Owner(pos), m_gold(gold), m_location(loc)
 {
 	//TEMP ============== Panel requires a character to Initilize. FIX ================================
-	starter = new Character(CharacterType::Yuffie, sf::Vector2f(250.f, 350.f), this);
-	starter->m_sprite.setScale(-0.8f, 0.8f);
+	starter = new Character("Sprites/Characters/Soll Gunner 1.png", sf::Vector2f(250.f, 330.f), this);
 	this->AddCharacter(starter);
 	//=================================================================================================
 	m_selectedCharacter[0] = starter;

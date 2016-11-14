@@ -2,8 +2,7 @@
 
 Enemy::Enemy(const sf::Vector2f & pos) : Owner(pos)
 {
-	starter = new Character(CharacterType::Vincent, sf::Vector2f(1000.f, 350.f), this);
-	starter->m_sprite.setScale(0.8f, 0.8f);
+	starter = new Character("Sprites/Characters/Adela Squire 1.png", sf::Vector2f(1000.f, 330.f), this);
 	AddCharacter(starter);
 
 	m_selectedCharacter[0] = starter;

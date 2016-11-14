@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "SFML\Graphics.hpp"
 #include "ButtonTypes.h"
+
 #include <iostream>
 #include <vector>
 
@@ -10,24 +11,12 @@ class Owner;
 class Character;
 class PanelWithStats;
 class PanelWithButtons;
-//Temp
-enum class CharacterType
-{
-	Cloud,
-	Tifa,
-	Aerith,
-	RedX,
-	Barrett,
-	CaitSith,
-	Yuffie,
-	Vincent,
-	Cid
-};
+class AnimationManager;
 
 class Character : public GameObject
 {
 public:
-	Character(CharacterType type, const sf::Vector2f & pos, Owner* owner);
+	Character(std::string texturePath, const sf::Vector2f & pos, Owner* owner);
 	~Character();
 
 	virtual void Update(sf::RenderWindow* window, float dt);
@@ -41,8 +30,6 @@ public:
 
 	void SetOwner(Owner* owner);
 
-	void SetCharacter(); //Set the sprite rect depending on type
-
 	void Action(ButtonType type); // Does behavior based off type of button clicked.
 
 	std::string m_name; // Make a getter or something, just fix the reason this isnt private
@@ -53,6 +40,8 @@ private:
 
 	PanelWithStats* m_panel;
 	PanelWithButtons* m_buttonPanel;
+
+	AnimationManager* anim;
 
 	//std::vector<Stat*> m_stats;  Preffered way to store stats
 	Stat* m_health;
@@ -65,8 +54,5 @@ private:
 
 	//May need to extend to equipped, IE std::vector<Item*> m_equippedItems
 	//Maybe better as an Array since amount of equipped items will be known
-
-	//Temporary till perm Sprites added
-	CharacterType m_type;
 };
 
