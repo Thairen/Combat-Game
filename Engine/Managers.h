@@ -18,7 +18,9 @@ enum AnimationType
 	ATTACK,
 	DEFEND,
 	SKILL,
-	ITEM
+	ITEM,
+	HIT,
+	DEAD
 };
 
 class AnimationManager

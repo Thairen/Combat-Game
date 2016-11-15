@@ -8,33 +8,37 @@
 Character::Character(std::string texturePath, const sf::Vector2f & pos, Owner* owner) : GameObject(texturePath, pos)
 {
 	//Extend these into a vector of stats? (More convienant to work with? IE COMPONENT SYSTEM
+	m_name = SetName();
 	m_health = new Stat("Health", 50, rand() % 30 + 10);
 	m_strength = new Stat("Strength", 10, rand() % 7 + 5);
 	m_defense = new Stat("Defense", 10, rand() % 5 + 5);
 	m_level = new Stat("Level", 1, 100);
 	m_exp = new Stat("XP", 0, 100);
 
-	m_panel = new PanelWithStats(sf::Vector2f(this->GetPosition().x - 200, this->GetPosition().y + 190), this);
+	m_panel = new PanelWithStats(sf::Vector2f(this->GetPosition().x - 200, this->GetPosition().y + 230), this);
 	m_panel->m_sprite.setScale(2.0f, 2.0f);
 
-	m_buttonPanel = new PanelWithButtons(sf::Vector2f(this->GetPosition().x, this->GetPosition().y + 190), this);
+	m_buttonPanel = new PanelWithButtons(sf::Vector2f(this->GetPosition().x, this->GetPosition().y + 230), this);
 	m_buttonPanel->m_sprite.setScale(2.0f, 2.0f);
 
 	m_sprite.setOrigin(m_sprite.getScale().x * 0.5f, m_sprite.getScale().y * 0.5f);
 	m_sprite.setTextureRect(sf::IntRect(10, 40, 80, 85));
-	m_sprite.setScale(-2.0f, 2.0f);
+	m_sprite.setScale(-2.2f, 2.2f);
 
 	SetOwner(owner);
+	
 
 	Enemy* enemy = dynamic_cast<Enemy*>(owner);
 
-
+	//If owning character is an enemy
+	//=========================================
 	if (enemy)
 	{
-		m_panel->SetPos(sf::Vector2f(this->GetPosition().x, this->GetPosition().y + 190));
+		m_panel->SetPos(sf::Vector2f(this->GetPosition().x, this->GetPosition().y + 230));
 		m_buttonPanel->SetVisible(false);
-		m_sprite.setScale(2.0f, 2.0f);
+		m_sprite.setScale(2.2f, 2.2f);
 	}
+	//============================================
 
 	anim = new AnimationManager(this);
 
@@ -163,4 +167,14 @@ void Character::Action(ButtonType type)
 	}
 
 	}
+}
+
+std::string Character::SetName()
+{
+	std::string name;
+	int num = rand() % 15;
+
+	name = prefix[num] + mid[num] + suffix[num];
+
+	return name;
 }

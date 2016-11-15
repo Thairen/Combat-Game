@@ -2,7 +2,7 @@
 
 Enemy::Enemy(const sf::Vector2f & pos) : Owner(pos)
 {
-	starter = new Character("Sprites/Characters/Adela Squire 1.png", sf::Vector2f(1000.f, 330.f), this);
+	starter = new Character("Sprites/Characters/Worker Bald.png", sf::Vector2f(1000.f, 275.f), this);
 	AddCharacter(starter);
 
 	m_selectedCharacter[0] = starter;

@@ -4,6 +4,7 @@
 #include "ButtonTypes.h"
 
 #include <iostream>
+#include <string>
 #include <vector>
 
 class Stat;
@@ -31,6 +32,7 @@ public:
 	void SetOwner(Owner* owner);
 
 	void Action(ButtonType type); // Does behavior based off type of button clicked.
+	std::string SetName();
 
 	std::string m_name; // Make a getter or something, just fix the reason this isnt private
 
@@ -49,6 +51,12 @@ private:
 	Stat* m_defense;
 	Stat* m_level;
 	Stat* m_exp;
+
+	//SUPER TEMP======================
+	std::string prefix[16] = { "Ste", "Mah", "Joa", "Mar", "Tin", "Gra", "Flo", "Sto", "Cor", "Dor", "Gan", "Ch", "Bra", "Da", "Fra", "Sta" };
+	std::string mid[16] = { "ven", "tun", "tre", "sun", "ohn", "ger", "der", "fla", "net", "meh", "harl", "guh", "and", "ave", "gin", "sin" };
+	std::string suffix[16] = { "son", "yen", "ith", "tran", "gov", "man", "jer", "ser", "don", "ez", "en", "an", "ve", "net", "fo", "ohm" };
+	//================================
 
 	//Inventory* m_inventory Will have vector<Item*>
 

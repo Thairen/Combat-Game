@@ -5,16 +5,12 @@
 AnimationManager::AnimationManager(Character* owner) : m_owner(owner),
 m_column(0), m_row(0), m_timer(0.6f), m_timeElapsed(0.f)
 {
-	//m_sprite.setScale = owner->m_sprite.getScale();
 }
 
 void AnimationManager::Update(sf::RenderWindow* window, float dt)
 {
 	//Starts idle (base row = 0, base column = 0)
-
-	//Set the row to be animated
-
-	m_owner->m_sprite.setTextureRect(sf::IntRect(m_column * 96, m_row * 65, 90, 90));
+	m_owner->m_sprite.setTextureRect(sf::IntRect(m_column * 96, m_row * 96, 96, 96));
 
 	LoopAnimation(dt);
 }
@@ -25,22 +21,32 @@ int AnimationManager::ChooseRow(AnimationType type)
 	{
 	case AnimationType::ATTACK:
 	{
-		return m_row = 6;
+		return m_row = 4;
 		break;
 	}
 	case AnimationType::DEFEND:
 	{
-		return m_row = 2;
+		return m_row = 1;
 		break;
 	}
 	case AnimationType::SKILL:
 	{
-		return m_row = 9;
+		return m_row = 6;
 		break;
 	}
 	case AnimationType::ITEM:
 	{
-		return m_row = 15;
+		return m_row = 5;
+		break;
+	}
+	case AnimationType::HIT:
+	{
+		return m_row = 4;
+		break;
+	}
+	case AnimationType::DEAD:
+	{
+		return m_row = 12;
 		break;
 	}
 	default:
@@ -65,7 +71,11 @@ void AnimationManager::LoopAnimation(float dt)
 
 	{
 		m_column = 0;
-		m_row = 0; // Should switch back to idle (maybe better way to do)
+
+		if (m_row != 18) // If character isn't dead
+		{
+			m_row = 0; //switch back to idle (maybe better way to do)
+		}
 	}
 }
 /*

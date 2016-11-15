@@ -3,7 +3,7 @@
 Player::Player(const sf::Vector2f& pos, float gold, Location loc) : Owner(pos), m_gold(gold), m_location(loc)
 {
 	//TEMP ============== Panel requires a character to Initilize. FIX ================================
-	starter = new Character("Sprites/Characters/Elicia Lancer 6.png", sf::Vector2f(250.f, 330.f), this);
+	starter = new Character("Sprites/Characters/AdamShield.png", sf::Vector2f(250.f, 275.f), this);
 	this->AddCharacter(starter);
 	//=================================================================================================
 	m_selectedCharacter[0] = starter;
