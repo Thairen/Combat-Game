@@ -12,12 +12,22 @@ enum SoundType //Sound types, COUNT always last!!!
 	COUNT
 };
 
+enum AnimationType
+{
+	IDLE,
+	ATTACK,
+	DEFEND,
+	SKILL,
+	ITEM
+};
+
 class AnimationManager
 {
 public:
 	AnimationManager(Character* owner); // Take in sprite and position
 	virtual void Update(sf::RenderWindow* window, float dt);
 
+	int ChooseRow(AnimationType type);
 	void LoopAnimation(float dt);
 
 protected:

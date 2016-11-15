@@ -41,6 +41,12 @@ void Clickable::SetType(ButtonType type)
 		break;
 	}
 
+	case ButtonType::Defend:
+	{
+		buttonText = "Defend";
+		break;
+	}
+
 	case ButtonType::Skill:
 	{
 		buttonText = "Skill";
@@ -50,12 +56,6 @@ void Clickable::SetType(ButtonType type)
 	case ButtonType::Item:
 	{
 		buttonText = "Item";
-		break;
-	}
-
-	case ButtonType::Escape:
-	{
-		buttonText = "Escape";
 		break;
 	}
 

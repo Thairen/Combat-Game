@@ -5,8 +5,8 @@ enum class ButtonType
 {
 	Empty,
 	Attack,
+	Defend,
 	Skill,
-	Item,
-	Escape
+	Item
 };
 

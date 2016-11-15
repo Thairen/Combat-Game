@@ -24,11 +24,11 @@ PanelWithButtons::PanelWithButtons(const sf::Vector2f& pos, Character* owner) : 
 {
 	m_buttonList[0] = new Clickable(sf::Vector2f(this->GetPosition().x + 20, this->GetPosition().y + 10), ButtonType::Attack, owner);
 
-	m_buttonList[1] = new Clickable(sf::Vector2f(this->GetPosition().x + 20, this->GetPosition().y+ 55), ButtonType::Skill, owner);
+	m_buttonList[1] = new Clickable(sf::Vector2f(this->GetPosition().x + 20, this->GetPosition().y+ 55), ButtonType::Defend, owner);
 
-	m_buttonList[2] = new Clickable(sf::Vector2f(this->GetPosition().x + 20, this->GetPosition().y + 100), ButtonType::Item, owner);
+	m_buttonList[2] = new Clickable(sf::Vector2f(this->GetPosition().x + 20, this->GetPosition().y + 100), ButtonType::Skill, owner);
 
-	m_buttonList[3] = new Clickable(sf::Vector2f(this->GetPosition().x + 20, this->GetPosition().y + 145), ButtonType::Escape, owner);
+	m_buttonList[3] = new Clickable(sf::Vector2f(this->GetPosition().x + 20, this->GetPosition().y + 145), ButtonType::Item, owner);
 
 }
 

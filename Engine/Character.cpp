@@ -137,28 +137,28 @@ void Character::Action(ButtonType type)
 	case ButtonType::Attack:
 	{
 		//this->Attack();
-		std::cout << "Attacked" << std::endl;
+		anim->ChooseRow(ATTACK);
 		break;
 	}
 
 	case ButtonType::Skill:
 	{
 		//open skill panel
-		std::cout << "Skill" << std::endl;
+		anim->ChooseRow(SKILL);
 		break;
 	}
 
 	case ButtonType::Item:
 	{
 		//open item panel
-		std::cout << "Item" << std::endl;
+		anim->ChooseRow(ITEM);
 		break;
 	}
 
-	case ButtonType::Escape:
+	case ButtonType::Defend:
 	{
-		//Run behavior
-		std::cout << "Escape" << std::endl;
+		//Defend Behavior
+		anim->ChooseRow(DEFEND);
 		break;
 	}
 

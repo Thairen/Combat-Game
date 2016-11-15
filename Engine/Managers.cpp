@@ -3,7 +3,7 @@
 #include <iostream>
 
 AnimationManager::AnimationManager(Character* owner) : m_owner(owner),
-m_column(0), m_row(0), m_timer(0.5f), m_timeElapsed(0.f)
+m_column(0), m_row(0), m_timer(0.6f), m_timeElapsed(0.f)
 {
 	//m_sprite.setScale = owner->m_sprite.getScale();
 }
@@ -12,25 +12,60 @@ void AnimationManager::Update(sf::RenderWindow* window, float dt)
 {
 	//Starts idle (base row = 0, base column = 0)
 
-	m_owner->m_sprite.setTextureRect(sf::IntRect(m_column * 96, m_row * 65 + 5, 90, 90));
+	//Set the row to be animated
+
+	m_owner->m_sprite.setTextureRect(sf::IntRect(m_column * 96, m_row * 65, 90, 90));
 
 	LoopAnimation(dt);
 }
 
+int AnimationManager::ChooseRow(AnimationType type)
+{
+	switch (type)
+	{
+	case AnimationType::ATTACK:
+	{
+		return m_row = 6;
+		break;
+	}
+	case AnimationType::DEFEND:
+	{
+		return m_row = 2;
+		break;
+	}
+	case AnimationType::SKILL:
+	{
+		return m_row = 9;
+		break;
+	}
+	case AnimationType::ITEM:
+	{
+		return m_row = 15;
+		break;
+	}
+	default:
+	{
+		return m_row = 0;
+		break;
+	}
+	}
+}
+
 void AnimationManager::LoopAnimation(float dt)
 {
-	if (m_column > 3)
-
-	{
-		m_column = 0;
-	}
-
 	m_timeElapsed -= dt;
 
 	if (m_timeElapsed <= 0)
 	{
 		m_timeElapsed = m_timer;
 		m_column++;
+	}
+
+	if (m_column > 3)
+
+	{
+		m_column = 0;
+		m_row = 0; // Should switch back to idle (maybe better way to do)
 	}
 }
 /*
