@@ -3,7 +3,7 @@
 #include <iostream>
 
 AnimationManager::AnimationManager(Character* owner) : m_owner(owner),
-m_column(0), m_row(0), m_timer(0.6f), m_timeElapsed(0.f)
+m_column(0), m_row(0), m_timer(0.35f), m_timeElapsed(0.f)
 {
 }
 
@@ -41,7 +41,7 @@ int AnimationManager::ChooseRow(AnimationType type)
 	}
 	case AnimationType::HIT:
 	{
-		return m_row = 4;
+		return m_row = 3;
 		break;
 	}
 	case AnimationType::DEAD:

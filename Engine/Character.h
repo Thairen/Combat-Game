@@ -2,7 +2,6 @@
 #include "GameObject.h"
 #include "SFML\Graphics.hpp"
 #include "ButtonTypes.h"
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -26,25 +25,27 @@ public:
 	float GetCurrent(std::string desired);
 	float GetMax(std::string desired);
 
+	bool HasActed() { return hasActed; }
+	void SetActedBool(bool t) { hasActed = t; }
+
 	float Attack();
 	void TakeDamage(float dmg);
 
+	sf::Vector2f MoveTo(Character* target);
+
 	void SetOwner(Owner* owner);
-
-	void Action(ButtonType type); // Does behavior based off type of button clicked.
 	std::string SetName();
+	std::string GetName() { return m_name; }
 
-	std::string m_name; // Make a getter or something, just fix the reason this isnt private
+	AnimationManager* anim;
 
 private:
 
 	Owner* m_owner;
 
 	PanelWithStats* m_panel;
-	PanelWithButtons* m_buttonPanel;
 
-	AnimationManager* anim;
-
+	std::string m_name;
 	//std::vector<Stat*> m_stats;  Preffered way to store stats
 	Stat* m_health;
 	Stat* m_strength;
@@ -58,9 +59,8 @@ private:
 	std::string suffix[16] = { "son", "yen", "ith", "tran", "gov", "man", "jer", "ser", "don", "ez", "en", "an", "ve", "net", "fo", "ohm" };
 	//================================
 
-	//Inventory* m_inventory Will have vector<Item*>
+	bool hasActed;
 
-	//May need to extend to equipped, IE std::vector<Item*> m_equippedItems
-	//Maybe better as an Array since amount of equipped items will be known
+	//Inventory* m_inventory Will have vector<Item*>
 };
 

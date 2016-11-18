@@ -103,7 +103,7 @@ void PanelWithStats::Update(sf::RenderWindow * window, float dt)
 void PanelWithStats::ShowStats(sf::RenderWindow * window)
 {
 	name.setFont(m_font);
-	name.setString(m_owner->m_name);
+	name.setString(m_owner->GetName());
 	name.setPosition(this->GetPosition().x + 25, this->GetPosition().y + 20);
 	name.setColor(sf::Color::Black);
 	window->draw(name);

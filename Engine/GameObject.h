@@ -22,6 +22,7 @@ public:
 	void SetPos(const sf::Vector2f& pos);
 	sf::Vector2f GetPosition() { return m_pos; }
 	void SetOwner(Game* owner);
+	sf::Sprite getowner() { return m_sprite; }
 	virtual void Destroy();
 	bool IsDestroyed();
 

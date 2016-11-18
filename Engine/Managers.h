@@ -29,6 +29,8 @@ public:
 	AnimationManager(Character* owner); // Take in sprite and position
 	virtual void Update(sf::RenderWindow* window, float dt);
 
+	int GetRow() { return m_row; }
+
 	int ChooseRow(AnimationType type);
 	void LoopAnimation(float dt);
 

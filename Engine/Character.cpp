@@ -5,7 +5,8 @@
 #include "Panel.h"
 #include "Managers.h"
 
-Character::Character(std::string texturePath, const sf::Vector2f & pos, Owner* owner) : GameObject(texturePath, pos)
+Character::Character(std::string texturePath, const sf::Vector2f & pos, Owner* owner) : GameObject(texturePath, pos),
+hasActed(false)
 {
 	//Extend these into a vector of stats? (More convienant to work with? IE COMPONENT SYSTEM
 	m_name = SetName();
@@ -17,9 +18,6 @@ Character::Character(std::string texturePath, const sf::Vector2f & pos, Owner* o
 
 	m_panel = new PanelWithStats(sf::Vector2f(this->GetPosition().x - 200, this->GetPosition().y + 230), this);
 	m_panel->m_sprite.setScale(2.0f, 2.0f);
-
-	m_buttonPanel = new PanelWithButtons(sf::Vector2f(this->GetPosition().x, this->GetPosition().y + 230), this);
-	m_buttonPanel->m_sprite.setScale(2.0f, 2.0f);
 
 	m_sprite.setOrigin(m_sprite.getScale().x * 0.5f, m_sprite.getScale().y * 0.5f);
 	m_sprite.setTextureRect(sf::IntRect(10, 40, 80, 85));
@@ -35,7 +33,6 @@ Character::Character(std::string texturePath, const sf::Vector2f & pos, Owner* o
 	if (enemy)
 	{
 		m_panel->SetPos(sf::Vector2f(this->GetPosition().x, this->GetPosition().y + 230));
-		m_buttonPanel->SetVisible(false);
 		m_sprite.setScale(2.2f, 2.2f);
 	}
 	//============================================
@@ -52,19 +49,15 @@ Character::~Character()
 void Character::Update(sf::RenderWindow* window, float dt)
 {
 	m_panel->Update(window, dt);
-	m_buttonPanel->Update(window, dt);
 	GameObject::Update(window, dt);
 
 	anim->Update(window, dt);
-
-	Action(m_buttonPanel->IsSelected());
 }
 
 void Character::Draw(sf::RenderWindow* window)
 {
 	GameObject::Draw(window);
 	m_panel->Draw(window);
-	m_buttonPanel->Draw(window);
 }
 
 float Character::GetCurrent(std::string desired)
@@ -114,13 +107,43 @@ float Character::GetMax(std::string desired)
 float Character::Attack()
 {
 	return m_strength->GetCurrent();
+
+	anim->ChooseRow(ATTACK);
 }
 
 void Character::TakeDamage(float dmg)
 {
 	 dmg -= m_defense->GetCurrent();
 
-	 m_health->SubtractCurrent(dmg);
+	 anim->ChooseRow(HIT);
+
+	 if (dmg > 0)
+		m_health->SubtractCurrent(dmg);
+}
+
+sf::Vector2f Character::MoveTo(Character * target)
+{
+	sf::Vector2f currentPos = this->GetPosition();
+	sf::Vector2f targetPos = target->GetPosition();
+
+	sf::Vector2f newPos;
+
+	/*if (difference > dt)
+		return current + dt;
+	if (difference < -dt)
+		return current - dt;*/
+	if (targetPos.x < 500.f)
+	{
+		//Enemy is attack, move him to player pos + 100
+		newPos.x = targetPos.x - currentPos.x;
+	}
+	else
+	{
+		//Player is attacking, move to enemy pos - 100
+		newPos.x = targetPos.x + currentPos.x;
+	}
+
+	return newPos;
 }
 
 void Character::SetOwner(Owner * owner)
@@ -128,45 +151,6 @@ void Character::SetOwner(Owner * owner)
 	m_owner = owner;
 
 	owner->AddCharacter(this);
-}
-
-void Character::Action(ButtonType type)
-{
-	switch (type)
-	{
-
-	case ButtonType::Empty: // NO BUTTON SELECTED
-		break;
-
-	case ButtonType::Attack:
-	{
-		//this->Attack();
-		anim->ChooseRow(ATTACK);
-		break;
-	}
-
-	case ButtonType::Skill:
-	{
-		//open skill panel
-		anim->ChooseRow(SKILL);
-		break;
-	}
-
-	case ButtonType::Item:
-	{
-		//open item panel
-		anim->ChooseRow(ITEM);
-		break;
-	}
-
-	case ButtonType::Defend:
-	{
-		//Defend Behavior
-		anim->ChooseRow(DEFEND);
-		break;
-	}
-
-	}
 }
 
 std::string Character::SetName()
