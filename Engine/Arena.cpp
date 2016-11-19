@@ -43,7 +43,7 @@ void Arena::Battle(Character* attacker, Character* defender, float dt)
 
 		if (!defender->HasActed())
 		{
-			EnemyAction(defender, attacker);
+			EnemyAction(defender, attacker, dt);
 		}
 
 		if (defender->HasActed())
@@ -69,7 +69,7 @@ void Arena::Action(ButtonType type, Character* actor, Character* target, float d
 
 	case ButtonType::Attack:
 	{
-		actor->SetPos(actor->MoveTo(target, dt));
+		actor->SetTarget(target->GetPosition());
 		actor->anim->ChooseRow(ATTACK);
 		target->TakeDamage(actor->Attack());
 		actor->SetActedBool(true);
@@ -108,13 +108,11 @@ void Arena::EnemyAction(Character * actor, Character * target, float dt)
 {
 	int choice = rand() % 4;
 	
-	std::cout << choice << std::endl;
-
 	switch (choice)
 	{
 	case 0: // Attack
 	{
-		actor->SetPos(actor->MoveTo(target, dt));
+		actor->SetTarget(target->GetPosition());
 		actor->anim->ChooseRow(ATTACK);
 		target->TakeDamage(actor->Attack());
 		actor->SetActedBool(true);

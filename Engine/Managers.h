@@ -19,6 +19,7 @@ enum AnimationType
 	DEFEND,
 	SKILL,
 	ITEM,
+	MOVE,
 	HIT,
 	DEAD
 };

@@ -44,6 +44,11 @@ int AnimationManager::ChooseRow(AnimationType type)
 		return m_row = 3;
 		break;
 	}
+	case AnimationType::MOVE:
+	{
+		return m_row = 8;
+		break;
+	}
 	case AnimationType::DEAD:
 	{
 		return m_row = 12;

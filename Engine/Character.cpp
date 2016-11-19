@@ -6,7 +6,8 @@
 #include "Managers.h"
 
 Character::Character(std::string texturePath, const sf::Vector2f & pos, Owner* owner) : GameObject(texturePath, pos),
-hasActed(false)
+hasActed(false), m_target(sf::Vector2f(0,0)
+)
 {
 	//Extend these into a vector of stats? (More convienant to work with? IE COMPONENT SYSTEM
 	m_name = SetName();
@@ -50,6 +51,8 @@ void Character::Update(sf::RenderWindow* window, float dt)
 {
 	m_panel->Update(window, dt);
 	GameObject::Update(window, dt);
+
+	MoveTo(dt);
 
 	anim->Update(window, dt);
 }
@@ -121,24 +124,29 @@ void Character::TakeDamage(float dmg)
 		m_health->SubtractCurrent(dmg);
 }
 
-sf::Vector2f Character::MoveTo(Character * target, float dt)
+void Character::MoveTo(float dt)
 {
-	sf::Vector2f currentPos = this->GetPosition();
-	sf::Vector2f targetPos = target->GetPosition();
-
-	float difference = targetPos.x - currentPos.x;
-	
-	if (difference > dt)
+	if (m_target.x != 0 && m_target.y != 0)
 	{
-		currentPos.x += dt;
-	}
+		sf::Vector2f currentPos = this->GetPosition();
+		sf::Vector2f targetPos = m_target;
 
-	if (difference < -dt)
-	{
-		currentPos.x -= dt;
-	}
+		float difference = targetPos.x - currentPos.x;
 
-	return targetPos;
+		anim->ChooseRow(MOVE);
+
+		if (difference > 10)
+		{
+			currentPos.x += dt * 450;
+		}
+
+		if (difference < -10)
+		{
+			currentPos.x -= dt * 450;
+		}
+
+		this->SetPos(currentPos);
+	}
 }
 
 void Character::SetOwner(Owner * owner)

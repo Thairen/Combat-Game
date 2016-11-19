@@ -31,7 +31,8 @@ public:
 	float Attack();
 	void TakeDamage(float dmg);
 
-	sf::Vector2f MoveTo(Character* target, float dt);
+	void MoveTo(float dt);
+	void SetTarget(const sf::Vector2f& target) { m_target = target; }
 
 	void SetOwner(Owner* owner);
 	std::string SetName();
@@ -42,6 +43,7 @@ public:
 private:
 
 	Owner* m_owner;
+	sf::Vector2f m_target;
 
 	PanelWithStats* m_panel;
 
