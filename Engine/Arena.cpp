@@ -22,15 +22,12 @@ void Arena::Battle(Character* attacker, Character* defender, float dt)
 
 		if (!attacker->HasActed())
 		{
-			Action(m_buttonPanel->IsSelected(), attacker, defender);
+			Action(m_buttonPanel->IsSelected(), attacker, defender, dt);
 		}
 
-		
 		//When action is done, swap turn
 		if (attacker->HasActed())
 		{
-			attacker->MoveTo(defender);
-
 			m_elapsedTime -= dt;
 
 			if (m_elapsedTime <= 0.f)
@@ -41,10 +38,9 @@ void Arena::Battle(Character* attacker, Character* defender, float dt)
 		}
 	}
 	if (turn == 'e')
-	{
-		
+	{	
 		attacker->SetActedBool(false);
-		//enemy input
+
 		if (!defender->HasActed())
 		{
 			EnemyAction(defender, attacker);
@@ -63,7 +59,7 @@ void Arena::Battle(Character* attacker, Character* defender, float dt)
 	}
 }
 
-void Arena::Action(ButtonType type, Character* actor, Character* target)
+void Arena::Action(ButtonType type, Character* actor, Character* target, float dt)
 {
 	switch (type)
 	{
@@ -73,6 +69,7 @@ void Arena::Action(ButtonType type, Character* actor, Character* target)
 
 	case ButtonType::Attack:
 	{
+		actor->SetPos(actor->MoveTo(target, dt));
 		actor->anim->ChooseRow(ATTACK);
 		target->TakeDamage(actor->Attack());
 		actor->SetActedBool(true);
@@ -107,7 +104,7 @@ void Arena::Action(ButtonType type, Character* actor, Character* target)
 	}
 }
 
-void Arena::EnemyAction(Character * actor, Character * target)
+void Arena::EnemyAction(Character * actor, Character * target, float dt)
 {
 	int choice = rand() % 4;
 	
@@ -117,6 +114,7 @@ void Arena::EnemyAction(Character * actor, Character * target)
 	{
 	case 0: // Attack
 	{
+		actor->SetPos(actor->MoveTo(target, dt));
 		actor->anim->ChooseRow(ATTACK);
 		target->TakeDamage(actor->Attack());
 		actor->SetActedBool(true);

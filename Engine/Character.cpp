@@ -121,29 +121,24 @@ void Character::TakeDamage(float dmg)
 		m_health->SubtractCurrent(dmg);
 }
 
-sf::Vector2f Character::MoveTo(Character * target)
+sf::Vector2f Character::MoveTo(Character * target, float dt)
 {
 	sf::Vector2f currentPos = this->GetPosition();
 	sf::Vector2f targetPos = target->GetPosition();
 
-	sf::Vector2f newPos;
+	float difference = targetPos.x - currentPos.x;
+	
+	if (difference > dt)
+	{
+		currentPos.x += dt;
+	}
 
-	/*if (difference > dt)
-		return current + dt;
 	if (difference < -dt)
-		return current - dt;*/
-	if (targetPos.x < 500.f)
 	{
-		//Enemy is attack, move him to player pos + 100
-		newPos.x = targetPos.x - currentPos.x;
-	}
-	else
-	{
-		//Player is attacking, move to enemy pos - 100
-		newPos.x = targetPos.x + currentPos.x;
+		currentPos.x -= dt;
 	}
 
-	return newPos;
+	return targetPos;
 }
 
 void Character::SetOwner(Owner * owner)

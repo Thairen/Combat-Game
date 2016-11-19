@@ -31,7 +31,7 @@ public:
 	float Attack();
 	void TakeDamage(float dmg);
 
-	sf::Vector2f MoveTo(Character* target);
+	sf::Vector2f MoveTo(Character* target, float dt);
 
 	void SetOwner(Owner* owner);
 	std::string SetName();
