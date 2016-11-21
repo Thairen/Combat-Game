@@ -6,8 +6,7 @@
 #include "Managers.h"
 
 Character::Character(std::string texturePath, const sf::Vector2f & pos, Owner* owner) : GameObject(texturePath, pos),
-hasActed(false), m_target(sf::Vector2f(0,0)
-)
+hasActed(false), m_target(sf::Vector2f(0,0)), hasArrived(false)
 {
 	//Extend these into a vector of stats? (More convienant to work with? IE COMPONENT SYSTEM
 	m_name = SetName();
@@ -110,8 +109,6 @@ float Character::GetMax(std::string desired)
 float Character::Attack()
 {
 	return m_strength->GetCurrent();
-
-	anim->ChooseRow(ATTACK);
 }
 
 void Character::TakeDamage(float dmg)
@@ -126,28 +123,40 @@ void Character::TakeDamage(float dmg)
 
 void Character::MoveTo(float dt)
 {
-	if (m_target.x != 0 && m_target.y != 0)
+	if (m_target.x != 0 && m_target.y != 0) // If target isn't initialized yet
 	{
 		sf::Vector2f currentPos = this->GetPosition();
-		sf::Vector2f targetPos = m_target;
+		sf::Vector2f targetPos = m_target; // Enemies Pos
 
 		float difference = targetPos.x - currentPos.x;
 
-		anim->ChooseRow(MOVE);
+		if (!hasArrived)
+		{
+			anim->ChooseRow(MOVE);
+		}
 
-		if (difference > 10)
+		if (difference > 10) // If character is AI
 		{
 			currentPos.x += dt * 450;
 		}
 
-		if (difference < -10)
+		if (difference < -10) // AI to player Character
 		{
 			currentPos.x -= dt * 450;
 		}
 
+
 		this->SetPos(currentPos);
+
+
+		if (currentPos.x <= targetPos.x - 10 || currentPos.x <= targetPos.x + 10 || // Check if character is in position to run the attack
+			currentPos.x >= targetPos.x - 10 || currentPos.x >= targetPos.x + 10)
+		{
+			hasArrived = true;
+		}
 	}
 }
+
 
 void Character::SetOwner(Owner * owner)
 {

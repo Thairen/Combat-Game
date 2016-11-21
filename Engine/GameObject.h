@@ -4,12 +4,6 @@
 #include <string>
 #include <vector>
 
-//SUPER TEMP======================
-//std::string prefix[16] = { "Ste", "Mah", "Joa", "Mar", "Tin", "Gra", "Flo", "Sto", "Cor", "Dor", "Gan", "Ch", "Bra", "Da", "Fra", "Sta" };
-//std::string mid[16] = { "ven", "tun", "tre", "sun", "ohn", "ger", "der", "fla", "net", "meh", "harl", "guh", "and", "ave", "gin", "sin" };
-//std::string suffix[16] = { "son", "yen", "ith", "tran", "gov", "man", "jer", "ser", "don", "ez", "en", "an", "ve", "net", "fo", "ohm" };
-//================================
-
 class Game;
 
 class GameObject

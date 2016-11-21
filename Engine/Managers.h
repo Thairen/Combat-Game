@@ -27,7 +27,7 @@ enum AnimationType
 class AnimationManager
 {
 public:
-	AnimationManager(Character* owner); // Take in sprite and position
+	AnimationManager(Character* owner); // Take in owning character for position and size
 	virtual void Update(sf::RenderWindow* window, float dt);
 
 	int GetRow() { return m_row; }

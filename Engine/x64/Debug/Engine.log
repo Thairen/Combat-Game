@@ -1,5 +1,10 @@
-﻿  Character.cpp
+﻿  Stat.cpp
+  Character.cpp
+c:\users\aicaoc\desktop\combat-game\engine\character.cpp(13): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\aicaoc\desktop\combat-game\engine\character.cpp(14): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\aicaoc\desktop\combat-game\engine\character.cpp(15): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\aicaoc\desktop\combat-game\engine\character.cpp(16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Arena.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Game.cpp
   Engine.vcxproj -> C:\Users\aicaoc\Desktop\Combat-Game\Engine\x64\Debug\Engine.exe

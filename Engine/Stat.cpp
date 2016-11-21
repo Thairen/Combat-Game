@@ -1,7 +1,5 @@
 #include "Stat.h"
 
-
-
 Stat::Stat(std::string id, float current, float max) : m_id(id), m_current(current), m_max(max)
 {
 	if (current > max)

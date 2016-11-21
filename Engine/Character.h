@@ -22,16 +22,16 @@ public:
 	virtual void Update(sf::RenderWindow* window, float dt);
 	virtual void Draw(sf::RenderWindow* window);
 
-	float GetCurrent(std::string desired);
-	float GetMax(std::string desired);
+	float GetCurrent(std::string desired); // Get the current of desired stat
+	float GetMax(std::string desired); // Get the max of stat
 
 	bool HasActed() { return hasActed; }
 	void SetActedBool(bool t) { hasActed = t; }
 
-	float Attack();
-	void TakeDamage(float dmg);
+	float Attack(); // Calculate Damage
+	void TakeDamage(float dmg); // Do damage reduc calculations and set Hit animation
 
-	void MoveTo(float dt);
+	void MoveTo(float dt); // Move the character to its enemy
 	void SetTarget(const sf::Vector2f& target) { m_target = target; }
 
 	void SetOwner(Owner* owner);
@@ -42,10 +42,10 @@ public:
 
 private:
 
-	Owner* m_owner;
-	sf::Vector2f m_target;
+	Owner* m_owner; // The owner of the character (IE :: Player / Enemy)
+	sf::Vector2f m_target; // Target location
 
-	PanelWithStats* m_panel;
+	PanelWithStats* m_panel; //.. Stat panel
 
 	std::string m_name;
 	//std::vector<Stat*> m_stats;  Preffered way to store stats
@@ -62,6 +62,7 @@ private:
 	//================================
 
 	bool hasActed;
+	bool hasArrived;
 
 	//Inventory* m_inventory Will have vector<Item*>
 };

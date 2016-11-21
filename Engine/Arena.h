@@ -15,7 +15,8 @@ public:
 	void Battle(Character* attacker, Character* defender, float dt);
 
 	void Action(ButtonType type, Character* actor, Character* target, float dt);
-	void EnemyAction(Character* actor, Character* target, float dt);
+	void EnemyAction(Character* actor, Character* target, float dt
+	);
 
 	float Approach(float goal, float current, float dt);
 
