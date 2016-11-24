@@ -17,6 +17,9 @@ Game::Game()
 
 	m_arena = new Arena(sf::Vector2f(0.f, 0.f), m_player->m_selectedCharacter[0]);
 	AddObject(m_arena);
+
+	m_gameStateMachine = new StateMachine();
+	AddGameStates();
 }
 void Game::Draw(sf::RenderWindow * window)
 {	
@@ -28,7 +31,7 @@ void Game::Draw(sf::RenderWindow * window)
 		current->Draw(window);
 	}
 
-	
+	m_gameStateMachine->Draw(window);
 }
 
 void Game::Update(sf::RenderWindow * window, float dt)
@@ -51,6 +54,8 @@ void Game::Update(sf::RenderWindow * window, float dt)
 		GameObject* current = m_gameObjects[i];
 		current->Update(window, dt);
 	}
+
+	m_gameStateMachine->Update(dt);
 	
 }
 
@@ -58,4 +63,13 @@ void Game::AddObject(GameObject * object)
 {
 	object->SetOwner(this);
 	m_gameObjects.push_back(object);
+}
+
+void Game::AddGameStates()
+{
+	m_gameStateMachine->AddState("mainmenu", new MainMenuState());
+	m_gameStateMachine->AddState("battle", new BattleState());
+	m_gameStateMachine->AddState("ingameMenu", new InGameMenuState());
+
+	m_gameStateMachine->ChangeState("mainmenu");
 }

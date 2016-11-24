@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "GameObject.h"
+#include "StateMachine.h"
 
 class Player;
 class Arena;
@@ -14,8 +15,11 @@ public:
 	void AddObject(GameObject* object);
 	void GameOver() { m_gameOver = true;  }
 
+	void AddGameStates();
+
 private:
-	std::vector<GameObject*> m_gameObjects;
+	std::vector<GameObject*> m_gameObjects; 
+	StateMachine* m_gameStateMachine;
 
 	bool m_gameOver;
 	sf::Font m_mainFont;

@@ -156,33 +156,45 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arena.h" />
+    <ClInclude Include="BattleState.h" />
     <ClInclude Include="ButtonTypes.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Clickable.h" />
+    <ClInclude Include="EmptyState.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="InGameMenuState.h" />
+    <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="Managers.h" />
     <ClInclude Include="Owner.h" />
     <ClInclude Include="Panel.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Stat.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateMachine.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arena.cpp" />
+    <ClCompile Include="BattleState.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Clickable.cpp" />
+    <ClCompile Include="EmptyState.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="InGameMenuState.cpp" />
+    <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Managers.cpp" />
     <ClCompile Include="Owner.cpp" />
     <ClCompile Include="Panel.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Stat.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
