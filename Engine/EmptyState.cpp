@@ -2,7 +2,7 @@
 
 
 
-EmptyState::EmptyState()
+EmptyState::EmptyState(StateMachine* machine) : State(machine)
 {
 }
 

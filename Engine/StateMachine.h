@@ -14,7 +14,7 @@ class StateMachine
 public:
 	StateMachine();
 
-	void Update(float dt);
+	void Update(sf::RenderWindow* window, float dt);
 	void Draw(sf::RenderWindow* window);
 
 	//Add states to the machine

@@ -52,8 +52,10 @@ private:
 	Stat* m_health;
 	Stat* m_strength;
 	Stat* m_defense;
+	Stat* m_speed;
 	Stat* m_level;
 	Stat* m_exp;
+	
 
 	//SUPER TEMP======================
 	std::string prefix[16] = { "Ste", "Mah", "Joa", "Mar", "Tin", "Gra", "Flo", "Sto", "Cor", "Dor", "Gan", "Ch", "Bra", "Da", "Fra", "Sta" };

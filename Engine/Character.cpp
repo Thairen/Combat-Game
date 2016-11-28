@@ -8,11 +8,12 @@
 Character::Character(std::string texturePath, const sf::Vector2f & pos, Owner* owner) : GameObject(texturePath, pos),
 hasActed(false), m_target(sf::Vector2f(0,0)), hasArrived(false)
 {
-	//Extend these into a vector of stats? (More convienant to work with? IE COMPONENT SYSTEM
+	//Extend these into a vector of stats? (More convienant to work with?)
 	m_name = SetName();
 	m_health = new Stat("Health", 50, rand() % 30 + 10);
 	m_strength = new Stat("Strength", 10, rand() % 7 + 5);
 	m_defense = new Stat("Defense", 10, rand() % 5 + 5);
+	m_speed = new Stat("Speed", 10, rand() % 4 + 4);
 	m_level = new Stat("Level", 1, 100);
 	m_exp = new Stat("XP", 0, 100);
 
@@ -62,6 +63,8 @@ void Character::Draw(sf::RenderWindow* window)
 	m_panel->Draw(window);
 }
 
+//// FOR CONVIENCE WHEN READING STATS TO A TEXT OBJECT
+/////////////////////////////////////////////////////////////////////////
 float Character::GetCurrent(std::string desired)
 {
 	float result;
@@ -74,6 +77,9 @@ float Character::GetCurrent(std::string desired)
 
 	if (desired == "Defense")
 		result = m_defense->GetCurrent();
+
+	if (desired == "Speed")
+		result = m_speed->GetCurrent();
 
 	if (desired == "Level")
 		result = m_level->GetCurrent();
@@ -97,6 +103,9 @@ float Character::GetMax(std::string desired)
 	if (desired == "Defense")
 		result = m_defense->GetMax();
 
+	if (desired == "Speed")
+		result = m_speed->GetMax();
+
 	if (desired == "Level")
 		result = m_level->GetMax();
 
@@ -105,6 +114,8 @@ float Character::GetMax(std::string desired)
 
 	return result;
 }
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 
 float Character::Attack()
 {
@@ -165,7 +176,7 @@ void Character::SetOwner(Owner * owner)
 	owner->AddCharacter(this);
 }
 
-std::string Character::SetName()
+std::string Character::SetName() //Need to improve on this list for more unique and better names
 {
 	std::string name;
 	int num = rand() % 15;

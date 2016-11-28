@@ -3,7 +3,7 @@
 class EmptyState : public State
 {
 public:
-	EmptyState();
+	EmptyState(StateMachine* machine);
 	~EmptyState();
 
 	virtual void Update(float dt);

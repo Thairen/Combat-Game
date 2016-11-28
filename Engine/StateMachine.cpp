@@ -2,15 +2,15 @@
 
 
 
-StateMachine::StateMachine() : m_currentState(new EmptyState)
+StateMachine::StateMachine() : m_currentState(new EmptyState(this))
 {
 	m_states = std::map<std::string, State*>();
 	m_stateStack = std::vector<State*>();
 }
 
-void StateMachine::Update(float dt)
+void StateMachine::Update(sf::RenderWindow* window, float dt)
 {
-	m_currentState->Update(dt);
+	m_currentState->Update(window, dt);
 }
 
 void StateMachine::Draw(sf::RenderWindow * window)
@@ -33,6 +33,7 @@ void StateMachine::AddState(std::string stateName, State * state)
 void StateMachine::PushState(std::string name)
 {
 	State* state = m_states[name];
+	m_stateStack.push_back(state);
 }
 
 void StateMachine::PopState()

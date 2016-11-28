@@ -1,13 +1,13 @@
 #include "State.h"
+#include "StateMachine.h"
 
 
-
-State::State()
+State::State(StateMachine* machine) : m_machine(machine)
 {
 	//No behavior for base state
 }
 
-void State::Update(float dt)
+void State::Update(sf::RenderWindow* window, float dt)
 {
 	//No behavior for base state
 }

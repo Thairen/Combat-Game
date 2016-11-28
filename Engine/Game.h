@@ -12,13 +12,14 @@ public:
 	Game();
 	void Draw(sf::RenderWindow* window);
 	void Update(sf::RenderWindow * window, float dt);
-	void AddObject(GameObject* object);
 	void GameOver() { m_gameOver = true;  }
 
 	void AddGameStates();
 
+	void UpdateBattle(sf::RenderWindow * window, float dt);
+	void DrawBattle(sf::RenderWindow* window);
+
 private:
-	std::vector<GameObject*> m_gameObjects; 
 	StateMachine* m_gameStateMachine;
 
 	bool m_gameOver;
