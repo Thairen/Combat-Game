@@ -148,32 +148,31 @@ void Character::MoveTo(float dt)
 
 		if (difference > 10) // If character is AI
 		{
-			currentPos.x += dt * 450;
+			currentPos.x += dt * 500;
 		}
 
 		if (difference < -10) // AI to player Character
 		{
-			currentPos.x -= dt * 450;
-		}
 
+			currentPos.x -= dt * 500;
+		}
 
 		this->SetPos(currentPos);
 
-
-		if (currentPos.x <= targetPos.x - 10 || currentPos.x <= targetPos.x + 10 || // Check if character is in position to run the attack
-			currentPos.x >= targetPos.x - 10 || currentPos.x >= targetPos.x + 10)
+		if (currentPos.x >= targetPos.x - 10.f || currentPos.x >= targetPos.x + 10.f ||
+			currentPos.x <= targetPos.x + 10.f || currentPos.x <= targetPos.x - 10.f)
 		{
 			hasArrived = true;
 		}
+
 	}
 }
-
 
 void Character::SetOwner(Owner * owner)
 {
 	m_owner = owner;
 
-	owner->AddCharacter(this);
+	owner->AddCharacter(this); // BELIEVE IT!!
 }
 
 std::string Character::SetName() //Need to improve on this list for more unique and better names

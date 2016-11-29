@@ -69,7 +69,7 @@ void Arena::Action(ButtonType type, Character* actor, Character* target, float d
 
 	case ButtonType::Attack:
 	{
-		actor->SetTarget(target->GetPosition()); // Set m_target inside character
+		actor->SetTarget(sf::Vector2f(target->GetPosition().x - 25, target->GetPosition().y)); // Set m_target inside character
 		actor->anim->ChooseRow(ATTACK); // Set animation row
 		target->TakeDamage(actor->Attack()); // Deal damage to enemy
 		actor->SetActedBool(true); // Action is done, switch turn
@@ -112,7 +112,7 @@ void Arena::EnemyAction(Character * actor, Character * target, float dt)
 	{
 	case 0: // Attack
 	{
-		actor->SetTarget(target->GetPosition());
+		actor->SetTarget(sf::Vector2f(target->GetPosition().x + 50, target->GetPosition().y));
 		actor->anim->ChooseRow(ATTACK);
 		target->TakeDamage(actor->Attack());
 		actor->SetActedBool(true);
